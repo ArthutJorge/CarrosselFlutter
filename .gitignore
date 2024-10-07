@@ -1,0 +1,21 @@
+# Ignorar a pasta node_modules
+node_modules/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de ambiente
+.env
+
+# Ignorar o diretório de compilação do TypeScript
+dist/
+
+# Ignorar diretórios de testes
+coverage/
+
+# Ignorar o diretório de arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos do npm
+package-lock.json
