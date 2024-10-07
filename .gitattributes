@@ -1,0 +1,6 @@
+# Marcar todos os arquivos como não detectáveis
+* linguist-vendored=true
+
+# Exceções: Não marcar arquivos Dart e JavaScript como vendored
+*.dart linguist-vendored=false
+*.js linguist-vendored=false
