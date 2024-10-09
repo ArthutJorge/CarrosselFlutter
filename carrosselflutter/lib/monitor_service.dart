@@ -15,14 +15,4 @@ class MonitorService {
       throw Exception('Failed to load monitores');
     }
   }
-
-  Future<Monitor> fetchMonitorDetail(String nome) async {
-    final response = await http.get(Uri.parse('$apiUrl/$nome'));
-
-    if (response.statusCode == 200) {
-      return Monitor.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to load monitor detail');
-    }
-  }
 }
