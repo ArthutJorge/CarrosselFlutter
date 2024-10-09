@@ -1,69 +1,62 @@
 [
   {
     "nome": "Grabalos",
-    "avatar": "https://i.imgur.com/NDchOlx.jpeg",
+    "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
     "horarios": {
-      "segunda": ["7:30", "8:15", "9:00", "9:45", "10:30", "11:15"],
-      "terça": ["7:30", "8:15", "9:00", "9:45", "10:30", "11:15"],
-      "quarta": ["7:30", "8:15", "9:00", "9:45", "10:30", "11:15"],
-      "sexta": ["7:30", "19:00", "19:45", "20:30"],
+      "segunda": ["7:30", "8:15", "9:00", "10:00", "10:45", "11:30"],
+      "terça": ["7:30", "8:15", "9:00"],
+      "quarta": ["7:30", "18:15", "19:00", "19:45", "20:30"],
+      "quinta": [],
+      "sexta": ["7:30", "8:15"],
       "sábado": []
     }
   },
   {
     "nome": "Beatriz",
-    "avatar": "https://i.imgur.com/NDchOlx.jpeg",
+    "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQFukkMqVp56SA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722479347781?e=1733961600&v=beta&t=P1FGDv_6EIr58oj4zwWlyMFiJ7Wp9owT3JAQqfUdd78",
     "horarios": {
-      "segunda": ["7:30", "8:15", "9:00", "9:45", "10:30", "11:15", "12:15"],
-      "terça": [
-        "7:30",
-        "8:15",
-        "9:00",
-        "9:45",
-        "10:30",
-        "11:15",
-        "17:30",
-        "18:15"
-      ],
-      "quarta": ["7:30", "8:15", "9:00", "9:45", "10:30", "11:15"],
-      "sexta": ["7:30", "12:15", "13:30"],
+      "segunda": ["7:30", "8:15", "9:00"],
+      "terça": ["7:30", "8:15", "9:00"],
+      "quarta": ["7:30", "17:30"],
+      "quinta": [],
+      "sexta": ["7:30", "8:15", "12:15", "13:30"],
+      "sábado": []
+    }
+  },
+  {
+    "nome": "Anna",
+    "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQFKuD8oLfLt_w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722265732180?e=1733961600&v=beta&t=OJ2DOV9oSAq9A2tTvT6p3dLKqkO0GTEvxHV8QKShRgo",
+    "horarios": {
+      "segunda": ["13:30"],
+      "terça": ["08:15", "09:00", "10:00", "10:45", "11:30", "13:30"],
+      "quarta": ["08:15", "09:00", "10:00", "10:45", "11:30", "13:30"],
+      "quinta": ["13:30"],
+      "sexta": ["16:45"],
       "sábado": []
     }
   },
   {
     "nome": "Marcos",
-    "avatar": "https://i.imgur.com/NDchOlx.jpeg",
+    "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQFeuXrVuGMl5g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1712310043506?e=1733961600&v=beta&t=HJ7rwlQlKlFWdqEsIVNN-RvB19uL3I7Uohe_pwZYQ_4",
     "horarios": {
-      "segunda": ["8:15", "9:00", "9:45", "10:30", "11:15"],
-      "terça": ["8:15", "9:00", "9:45", "10:30", "11:15", "18:15"],
-      "quarta": ["8:15", "9:00", "9:45", "10:30", "11:15", "19:00"],
+      "segunda": ["8:15", "9:00", "10:00", "10:45", "11:30", "18:15"],
+      "terça": ["8:15", "09:00", "18:15"],
+      "quarta": ["17:30", "18:15"],
       "quinta": [],
-      "sexta": ["18:15", "19:00", "19:45", "20:30"],
-      "sábado": ["7:30", "8:15", "9:00"]
-    }
-  },
-  {
-    "nome": "Anna",
-    "avatar": "https://i.imgur.com/NDchOlx.jpeg",
-    "horarios": {
-      "segunda": ["10:00", "10:45", "11:30", "13:30"],
-      "terça": ["10:00", "10:45", "11:30", "13:30"],
-      "quarta": ["10:00", "10:45", "11:30", "13:30"],
-      "quinta": ["10:00", "10:45", "11:30", "13:30"],
-      "sexta": ["10:00", "10:45", "11:30", "13:30"],
-      "sábado": []
+      "sexta": ["08:15", "13:30"],
+      "sábado": ["10:00", "10:45", "11:30"]
     }
   },
   {
     "nome": "Ricardo",
-    "avatar": "https://i.imgur.com/NDchOlx.jpeg",
+    "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQHclcgOVwPpsQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718227042202?e=1733961600&v=beta&t=X_iQjCCKPAaIOLd5PyIV5MHjYUH-nfk76B2fX0CTdwA",
     "horarios": {
       "segunda": [],
-      "terça": ["19:00", "19:45", "20:30", "21:15"],
-      "quarta": ["14:15", "15:00", "16:00", "17:30"],
-      "quinta": ["14:15", "15:00", "16:00", "17:30"],
-      "sexta": ["14:15", "15:00", "16:00", "17:30"],
-      "sábado": ["7:30", "8:15", "9:00", "9:45", "10:45", "11:30"]
+      "terça": ["19:00"],
+      "quarta": ["20:30", "21:30", "22:15"],
+      "quinta": ["15:00", "16:00"],
+      "sexta": ["14:15", "15:00", "16:00", "20:30", "21:30", "22:15"],
+      "sábado": ["7:30"]
     }
   }
 ]
