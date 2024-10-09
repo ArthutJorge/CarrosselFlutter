@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import './monitor.dart';
 
 class MonitorService {
-  final String apiUrl = 'http://localhost:9090/monitores';
+  final String apiUrl = 'https://carrossel-flutter-api.vercel.app/monitores'; // 'http://localhost:9090/monitores';
 
   Future<List<Monitor>> fetchMonitores() async {
     final response = await http.get(Uri.parse(apiUrl));
