@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/monitor.dart';
 
 class MonitorService {
-  final String apiUrl = 'http://localhost:9090/monitores'; // URL da sua API
+  final String apiUrl = 'https://carrossel-flutter-api.vercel.app/monitores'; // 'http://localhost:9090/monitores';
 
   Map<String, List<Monitor>> monitoresPorMateria = {};
   Map<String, int> calendarioTipoPorMateria = {}; // Adicionado para armazenar calendarioTipo

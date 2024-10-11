@@ -1,3 +1,4 @@
+import 'package:carrosselflutter/monitoria_materia.dart';
 import 'package:flutter/material.dart';
 import 'models/monitor.dart';
 import 'package:intl/intl.dart';
@@ -132,60 +133,226 @@ class MonitorCarousel extends StatelessWidget {
     return Colors.grey[300]!;
   }
 
+String _getCardAvailabilityText(Monitor monitor) {
+  DateTime now = DateTime.now();
+  String diaDaSemana = DateFormat('EEEE', 'pt_BR').format(now).replaceAll("-feira", "").trim();
+
+  if (monitor.horarios[diaDaSemana] != null) {
+    List<String> horarios = monitor.horarios[diaDaSemana]!;
+    DateTime fimDisponibilidade;
+
+    for (int i = 0; i < horarios.length; i++) {
+      // Considera o horário e o local
+      List<String> horarioLocal = horarios[i].split(' - ');
+      String horarioSemLocal = horarioLocal[0];
+      String local = horarioLocal.length > 1 ? horarioLocal[1].trim() : '';
+
+      DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horarioSemLocal);
+      DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
+      DateTime fimHorario = inicioHorarioCompleto.add(Duration(minutes: calendarioTipo));
+
+      // Verificar se agora está entre o horário de início e fim
+      if (now.isAfter(inicioHorarioCompleto) && now.isBefore(fimHorario)) {
+        fimDisponibilidade = fimHorario;
+
+        // Verificar horários consecutivos
+        for (int j = i + 1; j < horarios.length; j++) {
+          List<String> proximoHorarioLocal = horarios[j].split(' - ');
+          String proximoHorarioSemLocal = proximoHorarioLocal[0];
+          DateTime proximoInicioHorario = DateFormat.Hm('pt_BR').parse(proximoHorarioSemLocal);
+          DateTime proximoInicioCompleto = DateTime(now.year, now.month, now.day, proximoInicioHorario.hour, proximoInicioHorario.minute);
+
+          if (calendarioTipo == 45 && fimHorario.isAfter(proximoInicioCompleto.subtract(Duration(minutes: 15)))) {
+            fimDisponibilidade = proximoInicioCompleto.add(Duration(minutes: 45));
+          } else if (calendarioTipo == 30) {
+            break;
+          } else {
+            break;
+          }
+        }
+
+        return 'Disponível agora até ${DateFormat.Hm('pt_BR').format(fimDisponibilidade)} - $local';
+      }
+    }
+
+    // Verificar horários futuros
+    for (String horario in horarios) {
+      List<String> horarioLocal = horario.split(' - ');
+      String horarioSemLocal = horarioLocal[0];
+
+      DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horarioSemLocal);
+      DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
+
+      if (inicioHorarioCompleto.isAfter(now)) {
+        return 'Disponível às $horario';
+      }
+    }
+  }
+
+  return 'Não disponível hoje';
+}
+
+
+}
+
+class MateriaCarousel extends StatelessWidget {
+  final List<Monitor> monitores;
+  final Function(Monitor) onMonitorTap;
+  final int calendarioTipo; // Novo parâmetro
+
+  const MateriaCarousel({
+    Key? key,
+    required this.monitores,
+    required this.onMonitorTap,
+    required this.calendarioTipo, // Adicionado aqui
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final PageController _pageController = PageController(viewportFraction: 0.75);
+
+    return SizedBox(
+      height: 200,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            itemCount: _groupMonitorsBySubject().length,
+            itemBuilder: (context, index) {
+              final subject = _groupMonitorsBySubject().keys.elementAt(index);
+              final subjectMonitors = _groupMonitorsBySubject()[subject]!;
+
+              return GestureDetector(
+                onTap: () {
+                  // Você pode criar uma lógica aqui para abrir a página correspondente à matéria
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  color: _getCardColor(subjectMonitors),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        subject,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Wrap(
+                        spacing: 10,
+                        children: subjectMonitors.map((monitor) {
+                          return Column(
+                            children: [
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundImage: NetworkImage(monitor.avatar),
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                monitor.nome,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                _getCardAvailabilityText(monitor),
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+          Positioned(
+            left: 16,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_left),
+              onPressed: () {
+                _pageController.previousPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              },
+            ),
+          ),
+          Positioned(
+            right: 16,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_right),
+              onPressed: () {
+                _pageController.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Map<String, List<Monitor>> _groupMonitorsBySubject() {
+    Map<String, List<Monitor>> groupedMonitors = {};
+    for (var monitor in monitores) {
+      for (var entry in monitor.horarios.entries) {
+        String subject = entry.key;
+        if (!groupedMonitors.containsKey(subject)) {
+          groupedMonitors[subject] = [];
+        }
+        groupedMonitors[subject]!.add(monitor);
+      }
+    }
+    return groupedMonitors;
+  }
+
+  Color _getCardColor(List<Monitor> subjectMonitors) {
+    DateTime now = DateTime.now();
+    // Verifica se algum monitor tem horários futuros
+    for (var monitor in subjectMonitors) {
+      String diaDaSemana = DateFormat('EEEE', 'pt_BR').format(now).replaceAll("-feira", "").trim();
+      List<String>? horariosFuturos = monitor.horarios[diaDaSemana];
+      if (horariosFuturos != null) {
+        for (String horario in horariosFuturos) {
+          DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horario.split(' - ')[0]);
+          DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
+          if (inicioHorarioCompleto.isAfter(now)) {
+            return Colors.yellow[100]!;
+          }
+        }
+      }
+    }
+    return Colors.grey[300]!;
+  }
+
   String _getCardAvailabilityText(Monitor monitor) {
     DateTime now = DateTime.now();
     String diaDaSemana = DateFormat('EEEE', 'pt_BR').format(now).replaceAll("-feira", "").trim();
 
     if (monitor.horarios[diaDaSemana] != null) {
       List<String> horarios = monitor.horarios[diaDaSemana]!;
-      DateTime fimDisponibilidade;
-
-      for (int i = 0; i < horarios.length; i++) {
-        // Considera apenas o horário antes do traço
-        String horarioSemLocal = horarios[i].split(' - ')[0];
-        DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horarioSemLocal);
-        DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
-        DateTime fimHorario = inicioHorarioCompleto.add(Duration(minutes: calendarioTipo)); // Usando calendarioTipo
-
-        // Verificar se agora está entre o horário de início e fim
-        if (now.isAfter(inicioHorarioCompleto) && now.isBefore(fimHorario)) {
-          // Se está trabalhando agora, calcula o fim do horário
-          fimDisponibilidade = fimHorario;
-
-          // Verifica se há horários consecutivos
-          for (int j = i + 1; j < horarios.length; j++) {
-            String proximoHorarioSemLocal = horarios[j].split(' - ')[0];
-            DateTime proximoInicioHorario = DateFormat.Hm('pt_BR').parse(proximoHorarioSemLocal);
-            DateTime proximoInicioCompleto = DateTime(now.year, now.month, now.day, proximoInicioHorario.hour, proximoInicioHorario.minute);
-
-            // Verifica a tolerância de 15 minutos se o calendário for de 45 minutos
-            if (calendarioTipo == 45 && fimHorario.isAfter(proximoInicioCompleto.subtract(Duration(minutes: 15)))) {
-              // Se está dentro do intervalo tolerado, atualiza o fim da disponibilidade
-              fimDisponibilidade = proximoInicioCompleto.add(Duration(minutes: 45));
-            } else if (calendarioTipo == 30) {
-              // Para 30 minutos, não há tolerância
-              break; // Sair do loop
-            } else {
-              break; // Se o intervalo não é tolerado, sai do loop
-            }
-          }
-          return 'Disponível agora até ${DateFormat.Hm('pt_BR').format(fimDisponibilidade)}';
-        }
-      }
-
-      // Verificar horários futuros
       for (String horario in horarios) {
-        // Considera apenas o horário antes do traço
-        String horarioSemLocal = horario.split(' - ')[0];
-        DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horarioSemLocal);
+        DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horario.split(' - ')[0]);
         DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
         if (inicioHorarioCompleto.isAfter(now)) {
-          return 'Disponível às $horarioSemLocal'; // Exibe o horário sem o local
+          return 'Disponível às ${horario}';
         }
       }
     }
-
-    // Se não há horários disponíveis hoje
     return 'Não disponível hoje';
   }
 }

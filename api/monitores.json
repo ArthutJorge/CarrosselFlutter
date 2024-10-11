@@ -6,59 +6,76 @@
         "nome": "Sofia T.",
         "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
-          "segunda": ["10:00 Sala 22", "10:30 Sala 22", "11:00 Sala 22", "12:30 Sala 22", "13:00 Sala 22", "17:30 Sala 22", "18:00 Sala 22", "18:30 Sala 22"],
-          "terça": ["18:30 Sala 22"],
-          "quarta": ["12:30 Sala 22", "13:00 Sala 22", "13:30 Sala 22", "14:00 Sala 22", "14:30 Sala 22", "15:00 Sala 22"],
-          "quinta": ["07:30", "10:00 Sala 22", "10:30 Sala 22", "11:00 Sala 22", "11:30 Sala 22", "12:00 Sala 22"],
+          "segunda": ["10:00 - Sala 22", "10:30 - Sala 22", "11:00 - Sala 22", "12:30 - Sala 22", "13:00 - Sala 22", "17:30 - Sala 22", "18:00 - Sala 22", "18:30 - Sala 22"],
+          "terça": ["18:30 - Sala 22"],
+          "quarta": ["12:30 - Sala 22", "13:00 - Sala 22", "13:30 - Sala 22", "14:00 - Sala 22", "14:30 - Sala 22", "15:00 - Sala 22"],
+          "quinta": ["07:30 - Sala 22", "10:00 - Sala 22", "10:30 - Sala 22", "11:00 - Sala 22", "11:30 - Sala 22", "12:00 - Sala 22"],
           "sexta": [],
           "sábado": []
         }
       },
       {
         "nome": "Binotto",
-        "avatar": "https://example.com/avatar_binotto.jpg",
+        "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
-          "segunda": ["07:30 Sala 22", "08:00 Sala 22", "08:30 Sala 22", "09:00 Sala 22", "09:30 Sala 22", "10:00 Sala 22", "10:30 Sala 22", "11:00 Sala 22", "11:30 Sala 22", "12:00 Sala 22"],
-          "terça": ["18:30 Sala 22", "19:00 Sala 22"],
-          "quarta": ["11:30 Sala 22", "12:00 Sala 22", "12:30 Sala 22"],
+          "segunda": ["07:30 - Sala 22", "08:00 - Sala 22", "08:30 - Sala 22", "09:00 - Sala 22", "09:30 - Sala 22", "10:00 - Sala 22", "10:30 - Sala 22", "11:00 - Sala 22", "11:30 - Sala 22", "12:00 - Sala 22"],
+          "terça": ["18:30 - Sala 22", "19:00 - Sala 22"],
+          "quarta": ["11:30 - Sala 22", "12:00 - Sala 22", "12:30 - Sala 22"],
           "quinta": [],
-          "sexta": ["11:30 Sala 22", "12:00 Sala 22", "17:00 Sala 22", "17:30 Sala 22", "18:00 Sala 22"],
+          "sexta": ["11:30 - Sala 22", "12:00 - Sala 22", "17:00 - Sala 22", "17:30 - Sala 22", "18:00 - Sala 22"],
           "sábado": []
         }
       },
       {
         "nome": "Sofia H.",
-        "avatar": "https://example.com/avatar_sofia_h.jpg",
+        "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
           "segunda": [],
           "terça": [],
           "quarta": [],
-          "quinta": ["18:00 Sala 22"],
+          "quinta": ["18:00 - Sala 22"],
           "sexta": [],
           "sábado": []
         }
       },
       {
         "nome": "Enzo",
-        "avatar": "https://example.com/avatar_enzo.jpg",
+        "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
           "segunda": [],
-          "terça": ["10:00 Sala 22"],
+          "terça": ["10:00 - Sala 22"],
           "quarta": [],
-          "quinta": ["12:00 Sala 22"],
+          "quinta": ["12:00 - Sala 22"],
           "sexta": [],
           "sábado": []
         }
       },
       {
         "nome": "Gabriel V.",
-        "avatar": "https://example.com/avatar_gabriel_v.jpg",
+        "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
-          "segunda": ["12:30 Sala 22", "13:00 Sala 22"],
-          "terça": ["10:30 Sala 22", "12:00 Sala 22"],
-          "quarta": ["10:00 Sala 22", "11:00 Sala 22"],
-          "quinta": ["12:00 Sala 22"],
+          "segunda": ["12:30 - Sala 22", "13:00 - Sala 22"],
+          "terça": ["10:30 - Sala 22", "12:00 - Sala 22"],
+          "quarta": ["10:00 - Sala 22", "11:00 - Sala 22"],
+          "quinta": ["12:00 - Sala 22"],
           "sexta": [],
+          "sábado": []
+        }
+      }
+    ]
+  },
+  "ingles": {
+    "calendarioTipo": 45,
+    "monitores": [
+      {
+        "nome": "Marina",
+        "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
+        "horarios": {
+          "segunda": [],
+          "terça": [],
+          "quarta": ["7:30 - Humanidades", "8:15 - Humanidades", "9:00 - Humanidades", "14:15 - Humanidades"],
+          "quinta": ["11:00 - Humanidades", "12:15 - Humanidades", "13:00 - Humanidades", "18:15 - Humanidades", "19:00 - Humanidades"],
+          "sexta": ["12:15 - Humanidades", "14:00 - Humanidades", "14:15 - Humanidades", "15:00 - Humanidades", "16:00 - Sala 13"],
           "sábado": []
         }
       }
