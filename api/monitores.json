@@ -1,15 +1,460 @@
 {
+  "mecatronica": {
+      "calendarioTipo": 45,
+      "observacao": "",
+      "horarios": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30","23:00"
+      ],
+      "monitores": [
+          {
+              "nome": "João Vítor",
+              "avatar": "",
+              "horarios": {
+                  "segunda": ["18:30 - Lina","19:00 - Lina","19:30 - Lina","20:00 - Lina","20:30 - Lina","21:00 - Lina"],
+                  "terça": ["13:30 - Lina","14:00 - Lina","14:30 - Lina","15:00 - Lina","15:30 - Lina","16:00 - Lina","16:30 - Lina","17:00 - Lina","17:30 - Lina","18:00 - Lina","19:00 - Sala 14","19:30 - Sala 14","20:00 - Sala 14","20:30 - Sala 14","21:00 - Sala 14"],
+                  "quarta": ["8:00 - Lina","8:30 - Lina","9:00 - Lina"],
+                  "quinta": [],
+                  "sexta": [],
+                  "sábado": []
+              }
+          },
+          {
+              "nome": "Fábio Elizeu",
+              "avatar": "",
+              "horarios": {
+                  "segunda": ["13:30 - Lina","14:00 - Lina"],
+                  "terça": ["13:00 - Lina","13:30 - Lina","14:00 - Lina","14:30 - Lina","15:00 - Lina","15:30","16:00 - Lina","16:30 - Lina"],
+                  "quarta": [],
+                  "quinta": ["18:00 - Lina","18:30 - Lina","19:00 - Lina","19:30 - Lina","20:00 - Lina","20:30 - Lina","21:00 - Lina","21:30 - Lina"],
+                  "sexta": ["10:00 - Lina","10:30 - Lina","11:00 - Lina","11:30 - Lina","12:00 - Lina","12:30 - Lina"],
+                  "sábado": []
+              }
+          }
+      ]
+  },
+    "enfermagem": {
+        "calendarioTipo": 30,
+        "observacao": "",
+        "horarios": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30"
+        ],
+        "monitores": [
+            {
+                "nome": "Luana",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["10:00","10:30","11:00","11:30"],
+                    "terça": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","17:00","17:30","18:00","18:30","19:00","19:30"],
+                    "quarta": ["13:00", "13:30","14:00","14:30","17:00","17:30"],
+                    "quinta": [],
+                    "sexta": [],
+                    "sábado": []
+                }
+            },
+            {
+                "nome": "Aline",
+                "avatar": "",
+                "horarios": {
+                    "segunda": [],
+                    "terça": ["13:00","13:30","14:00","14:30"],
+                    "quarta": ["12:30", "13:00"],
+                    "quinta": ["12:30","13:00"],
+                    "sexta": ["12:30","13:00","15:00","15:30","16:00","16:30","17:00","17:30"],
+                    "sábado": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30"]
+                }
+            },
+            {
+                "nome": "LUCAS",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["18:30","19:00","19:30","20:00","20:30"],
+                    "terça": [],
+                    "quarta": ["18:30","19:00","19:30","20:00","20:30"],
+                    "quinta": ["18:30","19:00","19:30","20:00","20:30"],
+                    "sexta": ["18:30","19:00","19:30","20:00","20:30"],
+                    "sábado": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30"]
+                }
+            }
+        ]
+    },
+    "meioAmbiente": {
+        "calendarioTipo": 30,
+        "observacao": "",
+        "horarios": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30"],
+        "monitores": [
+            {
+                "nome": "Lucas",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["17:30 - Sala 5","18:00 - Sala 5","18:30 - Sala 5","19:00 - Sala 5","19:30 - Sala 5","20:00 - Sala 5"],
+                    "terça": ["17:30 - Sala 5","18:00 - Sala 5","18:30 - Sala 5","19:00 - Sala 5","19:30 - Sala 5","20:00 - Sala 5"],
+                    "quarta": ["17:30 - Sala 5","18:00 - Sala 5","18:30 - Sala 5","19:00 - Sala 5","19:30 - Sala 5","20:00 - Sala 5"],
+                    "quinta": ["17:30 - Sala 5","18:00 - Sala 5","18:30 - Sala 5","19:00 - Sala 5","19:30 - Sala 5","20:00 - Sala 5"],
+                    "sexta": ["16:30 - Sala 5","17:00 - Sala 5","17:30 - Sala 5","18:00 - Sala 5","18:30 - Sala 5","19:00 - Sala 5","19:30 - Sala 5","20:00 - Sala 5"],
+                    "sábado": []
+                }
+            }
+        ]
+    },
+    "segurancaTrabalho": {
+        "calendarioTipo": 45,
+        "observacao": "",
+        "horarios": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30"
+        ],
+        "monitores": [
+            {
+                "nome": "João Victor",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["17:00","17:30","18:00","18:30","19:00"],
+                    "terça": ["17:00","17:30","18:00","18:30","19:00"],
+                    "quarta": ["17:00","17:30","18:00","18:30","19:00","19:30"],
+                    "quinta": ["17:00","17:30","18:00","18:30","19:00" ],
+                    "sexta": ["17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00"],
+                    "sábado": []
+                }
+            }
+        ]
+    },
+  "plasticos": {
+      "calendarioTipo": 30,
+      "observacao": "",
+      "horarios": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:10","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30"
+      ],
+      "monitores": [
+          {
+              "nome": "Isabella",
+              "avatar": "",
+              "horarios": {
+                  "segunda": ["11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00"],
+                  "terça": ["15:10","16:00","16:30","17:00","17:30","18:00","18:30", "19:00"],
+                  "quarta": [],
+                  "quinta": [],
+                  "sexta": ["15:10","16:00","16:30","17:00","17:30", "18:00","18:30", "19:00"],
+                  "sábado": []
+              }
+          }
+      ]
+  },
+    "eletroeletronica": {
+        "calendarioTipo": 30,
+        "observacao": "",
+        "horarios": ["7:30","8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30"
+        ],
+        "monitores": [
+            {
+                "nome": "Núbia",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["15:00","15:30","16:00","16:30","17:00","17:30","18:00"],
+                    "terça": [],
+                    "quarta": [],
+                    "quinta": [],
+                    "sexta": ["16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30"],
+                    "sábado": [ "7:30", "8:00", "8:30", "9:00"]
+                }
+            },
+            {
+                "nome": "Luan",
+                "avatar": "",
+                "horarios": {
+                    "segunda": [],
+                    "terça": ["19:30","20:00","20:30","21:00","21:30","22:00","22:30"],
+                    "quarta": ["19:30","20:00","20:30","21:00","21:30","22:00","22:30"],
+                    "quinta": [],
+                    "sexta": ["20:00","20:30","21:00","21:30","22:00","22:30"],
+                    "sábado": ["10:30","11:00","11:30","12:00","12:30"]
+                }
+            },
+            {
+                "nome": "Allyson",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["19:00","19:30","20:00","20:30","21:00","21:30"],
+                    "terça": [],
+                    "quarta": ["13:30","14:00","14:30","15:00","15:30","16:00"],
+                    "quinta": ["19:00","19:30","20:00","20:30","21:00","21:30"],
+                    "sexta": ["15:00","15:30","16:00","16:30","17:00","17:30"],
+                    "sábado": []
+                }
+            },
+            {
+                "nome": "Terasawa",
+                "avatar": "",
+                "horarios": {
+                    "segunda": [ "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30"],
+                    "terça": [ "14:00", "14:30"],
+                    "quarta": [],
+                    "quinta": ["18:30","19:00","19:30","20:00","20:30","21:00","21:30"],
+                    "sexta": ["14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30"],
+                    "sábado": []
+                }
+            },
+            {
+                "nome": "Thayla",
+                "avatar": "",
+                "horarios": {
+                    "segunda": [],
+                    "terça": ["16:00","16:30","17:00","17:30","18:00","18:30"],
+                    "quarta": ["16:00","16:30","17:00","17:30","18:00","18:30"],
+                    "quinta": ["16:00","16:30","17:00","17:30","18:00","18:30"],
+                    "sexta": ["16:00","16:30","17:00","17:30","18:00","18:30"],
+                    "sábado": []
+                }
+            }
+        ]
+    },
+    "alimentos": {
+        "calendarioTipo": 45,
+        "observacao": "",
+        "horarios": ["7:30","8:15","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:20","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:45","17:00","17:30","18:15","18:30","19:00","19:30","20:00"
+        ],
+        "monitores": [
+            {
+                "nome": "Samara",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["7:30 - Sala 16","8:15 - Sala 16","8:30 - Sala 16","9:00 - Sala 16","9:30 - Sala 16","10:00 - Sala 16","10:30 - Sala 16","11:00 - Sala 16","11:30 - Sala 16","12:00 - Sala 16"],
+                    "terça": ["12:20 - Sala 8","13:00 - Sala 8"],
+                    "quarta": ["12:20 - Sala 8","13:00 - Sala 8"],
+                    "quinta": ["7:30 - Sala 18","8:15 - Sala 18"],
+                    "sexta": ["9:00 - Sala 7","9:30 - Sala 7","10:00 - Sala 7","10:30 - Sala 7","11:30 - Sala 7","12:00 - Sala 7","12:20 - Sala 7"],
+                    "sábado": ["8:15 - Sala 8","8:30 - Sala 8","9:00 - Sala 8","9:30 - Sala 8","10:00 - Sala 8","10:30 - Sala 8","11:00 - Sala 8","11:30 - Sala 8","12:00 - Sala 8"]
+                }
+            }
+        ]
+    },
+  "quimica": {
+      "calendarioTipo": 45,
+      "observacao": "",
+      "horarios": ["7:30","8:15","9:00","9:45","10:00","10:45","11:30","12:15","13:30","14:15","15:00","15:45","16:00","16:45","17:30","18:15","19:00","19:45","20:30","21:00","21:30","22:00","22:30"
+      ],
+      "monitores": [
+          {
+              "nome": "Kauã",
+              "avatar": "",
+              "horarios": {
+                  "segunda": ["10:45 - Sala 19","11:30 - Sala 19"],
+                  "terça": ["13:30 - Sala 7","14:15 - Sala 7","15:00 - Sala 7","15:45 - Sala 7","16:00 - Sala 7","16:45 - Sala 7","17:30 - Sala 7"],
+                  "quarta": ["7:30 - Sala 19","8:15 - Sala 19","9:00 - Sala 19","9:45 - Sala 19","10:00 - Sala 19"],
+                  "quinta": [],
+                  "sexta": ["12:15 - Sala 19","19:00 - Sala 19","19:45 - Sala 19"],
+                  "sábado": []
+              }
+          },
+          {
+              "nome": "Hugo",
+              "avatar": "",
+              "horarios": {
+                  "segunda": ["9:45","10:00","10:45 - Sala 19","11:30 - Sala 19","12:15","18:15 - Sala 18"],
+                  "terça": ["8:15","9:00","18:15 - Sala 21"],
+                  "quarta": ["17:30 - Sala 9","18:15 - Sala 9"],
+                  "quinta": ["12:15 - Sala 19"],
+                  "sexta": ["9:00","13:30 - Sala 1"],
+                  "sábado": []
+              }
+          }
+      ]
+  },
+    "biologia": {
+        "calendarioTipo": 30,
+        "observacao": "",
+        "horarios": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30"],
+        "monitores": [
+            {
+                "nome": "Anahí",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["8:00 - Sala 22","8:30 - Sala 22","9:00 - Sala 22","9:30 - Sala 22","10:00 - Sala 22","10:30 - Sala 22","11:00 - Sala 22","11:30 - Sala 22"],
+                    "terça": [ "12:00 - Sala 8", "12:30 - Sala 8"],
+                    "quarta": ["12:00 - Sala 8","12:30 - Sala 8"],
+                    "quinta": [],
+                    "sexta": ["9:00 - Sala 5","9:30 - Sala 5","10:00 - Sala 5","10:30 - Sala 5","16:00 - Sala 8","16:30 - Sala 8"],
+                    "sábado": ["8:30 - Sala 8","9:00 - Sala 8","9:30 - Sala 8","10:00 - Sala 8","10:30 - Sala 8","11:00 - Sala 8"]
+                }
+            },
+            {
+                "nome": "Pedro",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["9:00 - Sala 16","9:30 - Sala 16","10:00 - Sala 16","10:30 - Sala 16", "18:00 - Sala 8","18:30 - Sala 8","19:00 - Sala 8"],
+                    "terça": ["13:00 - Sala 8","13:30 - Sala 8","14:00 - Sala 8"],
+                    "quarta": ["13:00 - Sala 8","13:30 - Sala 8","14:00 - Sala 8","14:30 - Sala 8","15:00 - Sala 8","15:30 - Sala 8","16:00 - Sala 8","16:30 - Sala 8","17:00 - Sala 8","17:30 - Sala 8"],
+                    "quinta": ["9:00 - Sala 18","9:30 - Sala 18","10:00 - Sala 18","10:30 - Sala 18","13:00 - Sala 8","13:30 - Sala 8","14:00 - Sala 8","18:00 - Sala 9","18:30 - Sala 9","19:00 - Sala 9"],
+                    "sexta": [],
+                    "sábado": []
+                }
+            }
+        ]
+    },
+    "portugues": {
+        "calendarioTipo": 45,
+        "observacao": "Os horários de Anna são reservados para reforço com as turmas de 1º ano.",
+        "horarios": ["7:30","8:15","9:00","10:00","10:45","11:30","12:15","13:30","14:15","15:00","16:00","16:45","17:30","18:15","19:00","19:45","20:30","21:30","22:15"],
+        "monitores": [
+            {
+                "nome": "Anna",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["9:00 - Humanidades","10:00 - Humanidades", "10:45 - Humanidades","11:30 - Humanidades","12:15 - Humanidades"],
+                    "terça": ["18:15 - Humanidades", "19:00 - Humanidades"],
+                    "quarta": ["18:15 - Humanidades","19:00 - Humanidades"],
+                    "quinta": ["7:30 - Humanidades", "12:15 - Humanidades", "18:15 - Humanidades"],
+                    "sexta": ["11:30 - Humanidades","12:15 - Humanidades"],
+                    "sábado": []
+                }
+            },
+            {
+                "nome": "Maria",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["9:00 - Humanidades","10:00 - Humanidades","12:15 - Humanidades","18:15 - Humanidades","19:00 - Humanidades"],
+                    "terça": ["12:15 - Humanidades", "18:15 - Humanidades"],
+                    "quarta": ["12:15 - Humanidades","13:30 - Humanidades"],
+                    "quinta": ["9:00 - Humanidades","10:00 - Humanidades", "12:15 - Humanidades", "18:15 - Humanidades"],
+                    "sexta": [],
+                    "sábado": []
+                }
+            }
+        ]
+    },
+  "artes": {
+        "calendarioTipo": 30,
+        "observacao": "",
+        "horarios": ["14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:15","21:00","21:30","22:00","22:30"
+        ],
+        "monitores": [
+            {
+                "nome": "Paloma",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["16:30 - Humanidades","17:00 - Humanidades","17:30 - Humanidades","18:00 - Humanidades","18:30 - Humanidades","19:00 - Humanidades","19:30 - Humanidades","20:00 - Humanidades"],
+                    "terça": ["14:00 - Humanidades","14:30 - Humanidades","15:00 - Humanidades","15:30 - Humanidades","16:00 - Humanidades","16:30 - Humanidades","17:00 - Humanidades","17:30 - Humanidades","18:00 - Humanidades","18:30 - Humanidades"],
+                    "quarta": [],
+                    "quinta": ["17:00 - Humanidades","17:30 - Humanidades","18:00 - Humanidades","18:30 - Humanidades","19:00 - Humanidades","19:30 - Humanidades","20:00 - Humanidades"],
+                    "sexta": [],
+                    "sábado": []
+                }
+            }
+        ]
+    },
+  "educacaoFisica": {
+        "calendarioTipo": 45,
+        "observacao": "",
+        "horarios": ["7:30","7:45","8:15","9:00","9:45","10:00","10:45","11:00","11:30","12:00","12:15","12:30","13:00","13:15","13:30","14:00","14:15","15:00","16:00","16:45","17:30","18:15","18:30","19:00","19:30","19:45"],
+        "monitores": [
+            {
+                "nome": "Maria",
+                "avatar": "",
+                "horarios": {
+                    "segunda": ["10:45 - Humanidades","12:00 - Humanidades","12:15 - Humanidades","12:30 - Humanidades","13:00 - Humanidades","13:15 - Humanidades","13:30 - Humanidades"],
+                    "terça": [ "7:30 - Humanidades", "7:45 - Humanidades", "8:15 - Humanidades", "9:00 - Humanidades", "9:45 - Humanidades","13:00 - Humanidades","13:15 - Humanidades","13:30 - Humanidades","14:00 - Humanidades","14:15 - Humanidades","15:00 - Humanidades","18:30","19:00","19:30"],
+                    "quarta": [],
+                    "quinta": [],
+                    "sexta": [ "7:30 - Humanidades", "7:45 - Humanidades", "8:15 - Humanidades", "9:00 - Humanidades", "9:45 - Humanidades","10:00 - Humanidades","10:45 - Humanidades","11:30 - Humanidades","12:00 - Humanidades"],
+                    "sábado": []
+                }
+            },
+            {
+                "nome": "Beatriz",
+                "avatar": "",
+                "horarios": {
+                    "segunda": [ "7:45 - Humanidades", "8:15 - Humanidades", "9:00 - Humanidades", "9:45 - Humanidades","10:00 - Humanidades","10:45 - Humanidades","12:30 - Humanidades","13:00 - Humanidades","13:15 - Humanidades","13:30 - Humanidades"],
+                    "terça": ["13:15 - Humanidades","13:30 - Humanidades","14:00 - Humanidades","14:15 - Humanidades"],
+                    "quarta": ["12:30 - Humanidades","13:00 - Humanidades","13:15 - Humanidades","13:30 - Humanidades","14:00 - Humanidades"],
+                    "quinta": [ "7:45 - Humanidades", "8:15 - Humanidades", "9:00 - Humanidades", "9:45 - Humanidades","10:00 - Humanidades","10:45 - Humanidades"],
+                    "sexta": ["11:00 - Humanidades","11:30 - Humanidades","12:00 - Humanidades","12:15 - Humanidades","12:30 - Humanidades","13:00 - Humanidades","13:15 - Humanidades","13:30 - Humanidades"],
+                    "sábado": []
+                }
+            }
+        ]
+    },
+  "humanas": {
+    "calendarioTipo": 45,
+    "horarios": ["7:30","8:15","9:00","9:45","10:00","10:45","11:50","12:30","13:30","14:15","15:00","15:45","16:45","17:30","18:15","19:00","19:30","20:00"],
+    "observacao": "",
+    "monitores": [
+      {
+        "nome": "Ana Clarice",
+        "avatar": "",
+        "horarios": {
+          "segunda": [],
+          "terça": ["18:15 - Humanidades", "19:00 - Humanidades", "19:30 - Humanidades"],
+          "quarta": ["12:30 - Humanidades","18:15 - Humanidades","19:00 - Humanidades","19:30 - Humanidades"],
+          "quinta": ["12:30 - Humanidades","16:45 - Humanidades","17:30 - Humanidades","18:15 - Humanidades","19:00 - Humanidades","19:30 - Humanidades"],
+          "sexta": ["12:30 - Humanidades","15:00 - Humanidades","15:45 - Humanidades","16:45 - Humanidades","17:30 - Humanidades"],
+          "sábado": []
+        }
+      }
+    ]
+  },
+  "fisica": {
+    "calendarioTipo": 45,
+    "horarios": ["7:30","8:15","9:00","9:45","10:00","10:45","11:30","12:15","13:30","14:15","15:00","15:45","16:00","16:45","17:30","18:15","19:00","19:45","20:30"
+  ],
+    "observacao": "** - Online via Discord -> https://discord.gg/zhkBs8npzN ",
+    "monitores": [
+      {
+        "nome": "Aurora",
+        "avatar": "",
+        "horarios": {
+          "segunda": ["7:30 - Sala 13", "8:15 - Sala 13", "11:30 - Sala 13"],
+          "terça": [],
+          "quarta": ["15:00 - Sala 19", "15:45 - Sala 19", "16:00 - Sala 19"],
+          "quinta": ["7:30 - Sala 19"],
+          "sexta": ["7:30 - Sala 19","8:15 - Sala 19","13:30 - **","14:15 - **","15:00 - **","15:45 - **","16:00 - **"],
+          "sábado": ["13:30 - **", "14:15 - **", "15:00 - **", "15:45 - **"]
+        }
+      },
+      {
+        "nome": "Antonio",
+        "avatar": "",
+        "horarios": {
+          "segunda": [],
+          "terça": ["18:15 - Sala 15", "19:00 - Sala 15"],
+          "quarta": ["7:30 - Sala 16","8:15 - Sala 16","9:00 - Sala 16","9:45 - Sala 16","18:15 - Sala 14","19:00 - Sala 14"],
+          "quinta": ["18:15 - Sala 15", "19:00 - Frente humanidades"],
+          "sexta": ["14:15 - Sala 9","15:00 - Sala 9","15:45 - Sala 9","16:00 - Sala 9","16:45 - Sala 9","17:30 - Sala 9","18:15 - Sala 9"],
+          "sábado": []
+        }
+      },
+      {
+        "nome": "Enzo",
+        "avatar": "",
+        "horarios": {
+          "segunda": [ "12:15", "13:30", "16:00", "16:45", "17:30"],
+          "terça": ["12:15", "13:30"],
+          "quarta": ["12:15"],
+          "quinta": ["7:30", "12:15"],
+          "sexta": ["9:00", "9:45", "10:00"],
+          "sábado": ["7:30 - **", "8:15 - **", "9:00 - **", "9:45 - **"]
+        }
+      },
+      {
+        "nome": "Luiz",
+        "avatar": "",
+        "horarios": {
+          "segunda": ["15:45 - Sala 8","16:00 - Sala 8","16:45 - Sala 8","17:30 - Sala 8","18:15 - Sala 8"],
+          "terça": ["15:45 - Sala 8","16:00 - Sala 8","16:45 - Sala 8","17:30 - Sala 8","18:15 - Sala 8"],
+          "quarta": ["13:30 - Sala 8", "14:15 - Sala 8"],
+          "quinta": ["15:00 - Sala 6"],
+          "sexta": ["7:30 - Sala 9","8:15 - Sala 9","9:00 - Sala 9","9:45 - Sala 9","10:00 - Sala 9","10:45 - Sala 9","11:30 - Sala 9","12:15 - Sala 9"],
+          "sábado": []
+        }
+      }
+    ]
+  },
   "matematica": {
     "calendarioTipo": 30,
+    "horarios": ["7:30","8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30"],
+    "observacao": "** - Online via Discord -> https://discord.gg/kQtSdY8g \nDe terça a sexta, Gabriel V encerra sua monitoria às 18:50",
     "monitores": [
       {
         "nome": "Sofia T.",
         "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
-          "segunda": ["10:00 - Sala 22", "10:30 - Sala 22", "11:00 - Sala 22", "12:30 - Sala 22", "13:00 - Sala 22", "17:30 - Sala 22", "18:00 - Sala 22", "18:30 - Sala 22"],
+          "segunda": ["10:00 - Sala 22","10:30 - Sala 22","11:00 - Sala 22","12:30 - Sala 22","13:00 - Sala 22","17:30 - Sala 22","18:00 - Sala 22","18:30 - Sala 22"],
           "terça": ["18:30 - Sala 22"],
-          "quarta": ["12:30 - Sala 22", "13:00 - Sala 22", "13:30 - Sala 22", "14:00 - Sala 22", "14:30 - Sala 22", "15:00 - Sala 22"],
-          "quinta": ["07:30 - Sala 22", "10:00 - Sala 22", "10:30 - Sala 22", "11:00 - Sala 22", "11:30 - Sala 22", "12:00 - Sala 22"],
+          "quarta": ["12:30 - Sala 22","13:00 - Sala 22","13:30 - Sala 22","14:00 - Sala 22","14:30 - Sala 22","15:00 - Sala 22"],
+          "quinta": ["7:30 - Sala 22","10:00 - Sala 22","10:30 - Sala 22","11:00 - Sala 22","11:30 - Sala 22","12:00 - Sala 22"],
           "sexta": [],
           "sábado": []
         }
@@ -18,11 +463,11 @@
         "nome": "Binotto",
         "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
-          "segunda": ["07:30 - Sala 22", "08:00 - Sala 22", "08:30 - Sala 22", "09:00 - Sala 22", "09:30 - Sala 22", "10:00 - Sala 22", "10:30 - Sala 22", "11:00 - Sala 22", "11:30 - Sala 22", "12:00 - Sala 22"],
+          "segunda": ["7:30 - Sala 22","8:00 - Sala 22","8:30 - Sala 22","9:00 - Sala 22","9:30 - Sala 22","10:00 - Sala 22","10:30 - Sala 22","11:00 - Sala 22","11:30 - Sala 22","12:00 - Sala 22"],
           "terça": ["18:30 - Sala 22", "19:00 - Sala 22"],
           "quarta": ["11:30 - Sala 22", "12:00 - Sala 22", "12:30 - Sala 22"],
           "quinta": [],
-          "sexta": ["11:30 - Sala 22", "12:00 - Sala 22", "17:00 - Sala 22", "17:30 - Sala 22", "18:00 - Sala 22"],
+          "sexta": ["11:30 - Sala 22","12:00 - Sala 22","17:00 - Sala 22","17:30 - Sala 22","18:00 - Sala 22" ],
           "sábado": []
         }
       },
@@ -31,10 +476,10 @@
         "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
           "segunda": [],
-          "terça": [],
-          "quarta": [],
-          "quinta": ["18:00 - Sala 22"],
-          "sexta": [],
+          "terça": ["13:30 - Sala 22","14:00 - Sala 22","14:30 - Sala 22","15:00 - Sala 22","15:30 - Sala 22","16:00 - Sala 22","16:30 - Sala 22","17:00 - Sala 22","17:30 - Sala 22"],
+          "quarta": [ "19:00 - Sala 18", "19:30 - Sala 18", "20:00 - Sala 18", "20:30 - Sala 18"],
+          "quinta": ["9:00 - Sala 22", "9:30 - Sala 22", "10:00 - Sala 22"],
+          "sexta": ["16:00 - Sala 22","16:30 - Sala 22","17:00 - Sala 22","17:30 - Sala 22"],
           "sábado": []
         }
       },
@@ -43,10 +488,10 @@
         "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
           "segunda": [],
-          "terça": ["10:00 - Sala 22"],
-          "quarta": [],
-          "quinta": ["12:00 - Sala 22"],
-          "sexta": [],
+          "terça": ["13:00 - Sala 22","13:30 - Sala 22","14:00 - Sala 22","14:30 - Sala 22"],
+          "quarta": ["13:00 - Sala 22","20:00 - **","20:30 - **","21:00 - **"],
+          "quinta": ["12:00 - Sala 22","12:30 - Sala 22","13:00 - Sala 22","19:30 - **","20:00 - **","20:30 - **","21:00 - **"],
+          "sexta": ["13:00 - Sala 22","15:00 - Sala 22","15:30 - Sala 22","16:00 - Sala 22","16:30 - Sala 22","17:00 - Sala 22"],
           "sábado": []
         }
       },
@@ -54,11 +499,11 @@
         "nome": "Gabriel V.",
         "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGQHEyTaX5bZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722463182031?e=1733961600&v=beta&t=CIx4rGlY1QR6dqNVgsQcmBJVs1XbtKqsOE8uemnCwEQ",
         "horarios": {
-          "segunda": ["12:30 - Sala 22", "13:00 - Sala 22"],
-          "terça": ["10:30 - Sala 22", "12:00 - Sala 22"],
-          "quarta": ["10:00 - Sala 22", "11:00 - Sala 22"],
-          "quinta": ["12:00 - Sala 22"],
-          "sexta": [],
+          "segunda": ["17:00 - **"],
+          "terça": [ "16:30 - Sala 22", "17:00 - Sala 22", "17:30 - Sala 22", "18:00 - Sala 22", "18:30 - Sala 22"],
+          "quarta": ["16:30 - Sala 22","17:00 - Sala 22","17:30 - Sala 22","18:00 - Sala 22","18:30 - Sala 22"],
+          "quinta": ["16:30 - Sala 22","17:00 - Sala 22","17:30 - Sala 22","18:00 - Sala 22","18:30 - Sala 22"],
+          "sexta": ["16:30 - Sala 22","17:00 - Sala 22","17:30 - Sala 22","18:00 - Sala 22","18:30 - Sala 22"],
           "sábado": []
         }
       }
@@ -66,6 +511,8 @@
   },
   "ingles": {
     "calendarioTipo": 45,
+    "horarios": ["7:30","8:15","9:00","10:00","10:45","11:00","12:15","13:00","13:30","14:00","14:15","15:00","16:00","17:00","18:00","18:15","19:00","20:45","21:45","22:15"],
+    "observacao": "",
     "monitores": [
       {
         "nome": "Marina",
@@ -73,9 +520,9 @@
         "horarios": {
           "segunda": [],
           "terça": [],
-          "quarta": ["7:30 - Humanidades", "8:15 - Humanidades", "9:00 - Humanidades", "14:15 - Humanidades"],
-          "quinta": ["11:00 - Humanidades", "12:15 - Humanidades", "13:00 - Humanidades", "18:15 - Humanidades", "19:00 - Humanidades"],
-          "sexta": ["12:15 - Humanidades", "14:00 - Humanidades", "14:15 - Humanidades", "15:00 - Humanidades", "16:00 - Sala 13"],
+          "quarta": ["7:30 - Humanidades","8:15 - Humanidades","9:00 - Humanidades","14:15 - Humanidades"],
+          "quinta": ["11:00 - Humanidades","12:15 - Humanidades","13:00 - Humanidades","18:15 - Humanidades","19:00 - Humanidades"],
+          "sexta": ["12:15 - Humanidades","14:00 - Humanidades","14:15 - Humanidades","15:00 - Humanidades","16:00 - Sala 13"],
           "sábado": []
         }
       }
@@ -83,6 +530,8 @@
   },
   "informatica": {
     "calendarioTipo": 45,
+    "horarios": ["7:30", "8:15", "9:00", "10:00", "10:45", "11:30", "12:15", "13:30", "14:15", "15:00", "16:00", "16:45", "17:30", "18:15", "19:00", "19:45", "20:30", "21:30", "22:15"],
+    "observacao": "",
     "monitores": [
       {
         "nome": "Grabalos",
@@ -113,8 +562,8 @@
         "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQFKuD8oLfLt_w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722265732180?e=1733961600&v=beta&t=OJ2DOV9oSAq9A2tTvT6p3dLKqkO0GTEvxHV8QKShRgo",
         "horarios": {
           "segunda": ["13:30"],
-          "terça": ["08:15", "09:00", "10:00", "10:45", "11:30", "13:30"],
-          "quarta": ["08:15", "09:00", "10:00", "10:45", "11:30", "13:30"],
+          "terça": ["8:15", "9:00", "10:00", "10:45", "11:30", "13:30"],
+          "quarta": ["8:15", "9:00", "10:00", "10:45", "11:30", "13:30"],
           "quinta": ["13:30"],
           "sexta": ["16:45"],
           "sábado": []
@@ -125,10 +574,10 @@
         "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQFeuXrVuGMl5g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1712310043506?e=1733961600&v=beta&t=HJ7rwlQlKlFWdqEsIVNN-RvB19uL3I7Uohe_pwZYQ_4",
         "horarios": {
           "segunda": ["8:15", "9:00", "10:00", "10:45", "11:30", "18:15"],
-          "terça": ["8:15", "09:00", "18:15"],
+          "terça": ["8:15", "9:00", "18:15"],
           "quarta": ["17:30", "18:15"],
           "quinta": [],
-          "sexta": ["08:15", "13:30"],
+          "sexta": ["8:15", "13:30"],
           "sábado": ["10:00", "10:45", "11:30"]
         }
       },

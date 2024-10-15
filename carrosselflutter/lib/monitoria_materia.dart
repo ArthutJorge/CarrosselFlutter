@@ -1,8 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'models/monitor.dart';
 import 'services/monitor_service.dart';
-import 'components.dart'; // Certifique-se de que seus componentes estão importados corretamente
+import 'components.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MonitoriaMateriaPage extends StatefulWidget {
   final String materia;
@@ -18,8 +20,24 @@ class _MonitoriaMateriaPageState extends State<MonitoriaMateriaPage> {
   bool _isLoading = true;
   String? _selectedMateria;
 
-  final List<String> materias = ['matematica', 'ingles', 'fisica', 'educacaoFisica', 'artes', 'historia', 'portugues', 'biologia', 'quimica', 'segurancaTrabalho', 'meioAmbiente', 'mecatronica', 'informatica', 'enfermagem', 'eletronica', 'alimentos'
-  ];
+  final Map<String, String> materias = {
+  'alimentos': 'Alimentos',
+  'artes': 'Artes',
+  'biologia': 'Biologia',
+  'educacaoFisica': 'Educação Física',
+  'eletroeletronica': 'Eletroeletrônica',
+  'enfermagem': 'Enfermagem',
+  'fisica': 'Física',
+  'humanas': 'Humanas',
+  'ingles': 'Inglês',
+  'informatica': 'Informática',
+  'matematica': 'Matemática',
+  'meioAmbiente': 'Meio Ambiente',
+  'mecatronica': 'Mecatrônica',
+  'quimica': 'Química',
+  'segurancaTrabalho': 'Segurança do Trabalho',
+  'portugues': 'Português',
+};
 
   @override
   void initState() {
@@ -31,7 +49,8 @@ class _MonitoriaMateriaPageState extends State<MonitoriaMateriaPage> {
   Future<void> _fetchMonitores() async {
     await _monitorService.fetchMonitores();
     setState(() {
-      _monitoresPorMateria = _monitorService.getMonitoresPorMateria(_selectedMateria!);
+      _monitoresPorMateria =
+          _monitorService.getMonitoresPorMateria(_selectedMateria!);
       _isLoading = false;
     });
   }
@@ -48,7 +67,8 @@ class _MonitoriaMateriaPageState extends State<MonitoriaMateriaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Monitoria - ${StringCasingExtension(widget.materia).capitalize()}'), // Usa capitalize aqui
+        title: Text(
+            'Monitoria - ${StringCasingExtension(widget.materia).capitalize()}'), // Usa capitalize aqui
         centerTitle: true,
         backgroundColor: Colors.redAccent,
       ),
@@ -58,11 +78,11 @@ class _MonitoriaMateriaPageState extends State<MonitoriaMateriaPage> {
             padding: const EdgeInsets.all(16.0),
             child: DropdownButton<String>(
               value: _selectedMateria,
-              items: materias.map((materia) {
+              items: materias.keys.map((materiaKey) {
                 return DropdownMenuItem<String>(
-                  value: materia,
+                  value: materiaKey,
                   child: Text(
-                    StringCasingExtension(materia.replaceAll(RegExp(r'([A-Z])'), ' ').trim()).capitalize(),
+                    materias[materiaKey]!,
                   ),
                 );
               }).toList(),
@@ -82,14 +102,22 @@ class _MonitoriaMateriaPageState extends State<MonitoriaMateriaPage> {
                             SizedBox(
                               height: 200,
                               child: MonitorCarousel(
-                                monitores: _monitoresPorMateria,
-                                onMonitorTap: (monitor) => _navigateToMonitorDetails(monitor),
-                                calendarioTipo: _monitorService.getCalendarioTipoPorMateria(_selectedMateria!)
-                              ),
+                                  monitores: _monitoresPorMateria,
+                                  onMonitorTap: (monitor) =>
+                                      _navigateToMonitorDetails(monitor),
+                                  calendarioTipo: _monitorService
+                                      .getCalendarioTipoPorMateria(
+                                          _selectedMateria!)),
                             ),
                             const SizedBox(height: 30),
-                            MonitorScheduleTable(monitores: _monitoresPorMateria, 
-                            calendarioTipo: _monitorService.getCalendarioTipoPorMateria(_selectedMateria!),),
+                            MonitorScheduleTable(
+                              monitores: _monitoresPorMateria,
+                              observacao: _monitorService
+                                  .getObservacaoPorMateria(_selectedMateria!),
+                              horarios: _monitorService
+                                  .getHorariosPorMateria(_selectedMateria!),
+                                  monitorService: _monitorService,
+                            ),
                             const SizedBox(height: 30),
                           ],
                         ),
@@ -104,7 +132,11 @@ class _MonitoriaMateriaPageState extends State<MonitoriaMateriaPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => MonitorDetailView(monitor: monitor, calendarioTipo: _monitorService.getCalendarioTipoPorMateria(_selectedMateria!), ),
+        builder: (context) => MonitorDetailView(
+          monitor: monitor,
+          calendarioTipo:
+              _monitorService.getCalendarioTipoPorMateria(_selectedMateria!),
+        ),
       ),
     );
   }
@@ -118,116 +150,127 @@ extension StringCasingExtension on String {
 }
 
 
-class MonitorScheduleTable extends StatelessWidget {
+class MonitorScheduleTable extends StatefulWidget {
   final List<Monitor> monitores;
-  final int calendarioTipo; // Adiciona calendárioTipo como parâmetro
+  final List<String> horarios;
+  final String observacao;
+  final MonitorService monitorService;
 
-  MonitorScheduleTable({super.key, required this.monitores, required this.calendarioTipo});
+  const MonitorScheduleTable({
+    super.key,
+    required this.monitores,
+    required this.horarios,
+    required this.observacao,
+    required this.monitorService,
+  });
 
+  @override
+  _MonitorScheduleTableState createState() => _MonitorScheduleTableState();
+}
 
-  List<String> _gerarHorarios() {
-    
-    if (calendarioTipo == 30) {
-      List<String> horarios = [];
-      DateTime inicio = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 7, 30);
-      
-      for (int i = 0; i < 31; i++) {
-        horarios.add('${inicio.hour}:${inicio.minute.toString().padLeft(2, '0')}');
-        inicio = inicio.add(Duration(minutes: 30));
-      }
-      return horarios;
-    } else {
-      // Retorna horários padrão
-      return [
-        "7:30", "8:15", "9:00", "10:00", "10:45", "11:30", "12:15", 
-        "13:30", "14:15", "15:00", "16:00", "16:45", "17:30", "18:15", 
-        "19:00", "19:45", "20:30", "21:30", "22:15"
-      ];
-    }
-  }
-
+class _MonitorScheduleTableState extends State<MonitorScheduleTable> {
   final List<String> diasDaSemana = [
     "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"
   ];
 
- @override
-Widget build(BuildContext context) {
-  List<String> horariosList = _gerarHorarios(); // Gera horários com base no tipo de calendário
-  String diaAtual = _obterDiaAtual();
-  String horarioMaisProximo = _obterHorarioMaisProximo(horariosList);
+  final Map<String, Color> _coresMap = {};
 
-  return SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    child: ConstrainedBox(
-      constraints: const BoxConstraints(
-        minWidth: 225,
-      ),
-      child: Column(
-        children: [
-          DataTable(
-            columnSpacing: 5,
-            dataRowHeight: 30,
-            columns: [
-              const DataColumn(label: Center(child: Text(''))),
-              ...diasDaSemana.map((dia) => DataColumn(
-                    label: Flexible(
+  @override
+  void initState() {
+    super.initState();
+    _atribuirCoresParaMonitores();
+  }
+
+    void _atribuirCoresParaMonitores() {
+    _coresMap.clear();
+    List<Monitor> todosMonitores = widget.monitorService.getTodosMonitores();
+
+    for (int i = 0; i < todosMonitores.length; i++) {
+      String nomeMonitor = todosMonitores[i].nome.split('-').first.trim();
+      Color cor = _gerarCor(i); // Gere a cor procedimentalmente
+      _coresMap[nomeMonitor] = cor;
+    }
+  }
+Color _gerarCor(int index) {
+  double hue = (index * 137.5) % 360; 
+  double saturation = 0.8; // Mantém a saturação alta para cores mais intensas
+  double lightness = 0.4;  // Mantém a luminosidade baixa para evitar cores claras
+  return HSLColor.fromAHSL(1.0, hue, saturation, lightness).toColor(); // Cria a cor
+}
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    String diaAtual = _obterDiaAtual();
+    String horarioMaisProximo = _obterHorarioMaisProximo(widget.horarios);
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minWidth: 225,
+        ),
+        child: Column(
+          children: [
+            DataTable(
+              columnSpacing: 5,
+              dataRowHeight: 30,
+              columns: [
+                const DataColumn(label: Center(child: Text(''))),
+                ...diasDaSemana.map((dia) => DataColumn(
+                      label: Flexible(
                         child: Center(
-                            child: Text(
-                      dia,
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: dia == diaAtual ? Colors.red : Colors.black,
-                      ),
-                    ))),
-                  )),
-            ],
-            rows: horariosList.map((horario) {
-              return DataRow(
-                cells: [
-                  DataCell(Center(
-                      child: Text(
-                    horario,
-                    style: TextStyle(
-                      fontSize: 9,
-                      color: horario == horarioMaisProximo
-                          ? Colors.red
-                          : Colors.black,
-                    ),
-                  ))),
-                  ...diasDaSemana.map((dia) {
-                    String monitoresNoHorario =
-                        _obterMonitoresPorDiaEHorario(dia, horario);
-                    return DataCell(
-                      Center(
-                        child: SizedBox(
-                          width: 90,
                           child: Text(
-                            monitoresNoHorario.isNotEmpty
-                                ? monitoresNoHorario
-                                : '-',
-                            style: TextStyle(fontSize: 10),
-                            overflow: TextOverflow.visible,
-                            textAlign: TextAlign.center,
+                            dia,
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: dia == diaAtual ? Colors.red : Colors.black,
+                            ),
                           ),
                         ),
                       ),
-                    );
-                  }),
-                ],
-              );
-            }).toList(),
-          ),
-          const SizedBox(height: 10), // Espaçamento entre a tabela e o texto
-          const Text(
-            '** - Monitoria online Discord',
-            style: TextStyle(fontSize: 12), // Ajuste o tamanho conforme necessário
-          ),
-        ],
+                    )),
+              ],
+              rows: widget.horarios.map((horario) {
+                return DataRow(
+                  cells: [
+                    DataCell(
+                      Center(
+                        child: Text(
+                          horario,
+                          style: TextStyle(
+                            fontSize: 9,
+                            color: horario == horarioMaisProximo
+                                ? Colors.red
+                                : Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                    ...diasDaSemana.map((dia) {
+                      String monitoresNoHorario =
+                          _obterMonitoresPorDiaEHorario(dia, horario);
+                      return DataCell(
+                        Center(
+                          child: SizedBox(
+                            width: 90,
+                            child: _buildMonitoresText(monitoresNoHorario),
+                          ),
+                        ),
+                      );
+                    }),
+                  ],
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 10), // Espaçamento entre a tabela e o texto
+            ObservacaoWidget(observacao: widget.observacao),
+          ],
+        ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 
   String _obterDiaAtual() {
     DateTime now = DateTime.now();
@@ -264,8 +307,10 @@ Widget build(BuildContext context) {
 
   String _obterMonitoresPorDiaEHorario(String dia, String horario) {
     List<String> monitoresDisponiveis = [];
+    Map<String, String> monitoresESalas = {};
 
-    for (var monitor in monitores) {
+    // Mapeia monitores com as salas
+    for (var monitor in widget.monitores) {
       List<String> horariosFiltrados =
           monitor.horarios[dia.toLowerCase()] ?? [];
 
@@ -275,20 +320,139 @@ Widget build(BuildContext context) {
         String location = parts.length > 1 ? parts.sublist(1).join(' ') : '';
 
         if (time == horario) {
-          if (location.isNotEmpty) {
-            monitoresDisponiveis.add('${monitor.nome} $location');
-          } else {
-            monitoresDisponiveis.add(monitor.nome);
-          }
+          monitoresESalas[monitor.nome] = location;
         }
       }
     }
 
-    return monitoresDisponiveis.join(", ");
+    String salaComum = '';
+    bool mesmaSala = true;
+    for (var entry in monitoresESalas.entries) {
+      String nome = entry.key;
+      String sala = entry.value;
+
+      monitoresDisponiveis.add(nome);
+
+      if (salaComum.isEmpty) {
+        salaComum = sala;
+      } else if (salaComum != sala) {
+        mesmaSala = false;
+      }
+    }
+
+    // Se todos os monitores estão na mesma sala e há uma sala definida
+    if (mesmaSala && salaComum.isNotEmpty) {
+      return '${monitoresDisponiveis.join(", ")} $salaComum';
+    }
+
+    // Caso contrário, lista cada monitor com sua respectiva sala (ou sem sala se não definida)
+    return monitoresDisponiveis.map((monitor) {
+      String sala = monitoresESalas[monitor] ?? '';
+      return sala.isNotEmpty ? '$monitor $sala' : monitor;
+    }).join(", ");
+  }
+
+  Widget _buildMonitoresText(String monitoresNoHorario) {
+    List<String> monitores = monitoresNoHorario.split(", ");
+    List<InlineSpan> spans = [];
+
+    for (int i = 0; i < monitores.length; i++) {
+      String monitor = monitores[i];
+
+      // Pega apenas o nome antes do '-' para a cor
+      String nomeMonitor = monitor.split('-').first.trim(); 
+
+      if (nomeMonitor.isNotEmpty) {
+        Color cor = _coresMap[nomeMonitor] ?? Colors.black; // Cor padrão se não encontrado
+        spans.add(
+          TextSpan(
+            text: monitor + (i < monitores.length - 1 ? ', ' : ''), // Usa o monitor completo, incluindo a sala
+            style: TextStyle(color: cor),
+          ),
+        );
+      }
+    }
+
+    return RichText(
+      text: TextSpan(
+        style: const TextStyle(fontSize: 10),
+        children: spans,
+      ),
+      overflow: TextOverflow.visible,
+      textAlign: TextAlign.center,
+    );
   }
 }
 
 
+class ObservacaoWidget extends StatelessWidget {
+  final String observacao;
+
+  const ObservacaoWidget({required this.observacao, super.key});
+
+  // Função para abrir o link dinamicamente
+  void _abrirLink(String url) async {
+    final Uri uri = Uri.parse(url); // Cria um Uri a partir da string
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri); // Abre o link dinâmico
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    String textoAntesDoLink = observacao;
+    String? link;
+    String textoDepoisDoLink = '';
+
+    // Verifica se a observação contém um link
+    if (observacao.contains('->')) {
+      final partes = observacao.split('->');
+      textoAntesDoLink = partes.first.trim(); // Parte antes do link
+      link = partes.last.trim(); // Parte do link
+
+      if (link.contains('\n')) {
+        final partesLink = link.split('\n');
+        link = partesLink.first.trim();
+        textoDepoisDoLink =
+            partesLink.sublist(1).join('\n').trim(); // Parte após o link
+      }
+    }
+
+    return RichText(
+      text: TextSpan(
+        style: const TextStyle(fontSize: 12, color: Colors.black),
+        children: [
+          TextSpan(
+            text: textoAntesDoLink,
+          ),
+          if (link != null) ...[
+            const TextSpan(
+              text: ' -> ',
+            ),
+            TextSpan(
+              text: link,
+              style: const TextStyle(color: Colors.blue),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  _abrirLink(link!); // Abre o link dinâmico
+                },
+            ),
+          ],
+          if (textoDepoisDoLink.isNotEmpty) ...[
+            const TextSpan(text: '\n'), // Adiciona uma quebra de linha
+            TextSpan(
+              text: textoDepoisDoLink,
+              style: const TextStyle(
+                  color: Colors.black), // Mantém o texto após o link em preto
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
 
 class MonitorDetailView extends StatelessWidget {
   final Monitor monitor;
@@ -345,7 +509,8 @@ class MonitorDetailView extends StatelessWidget {
 
                   // Verifica se há horários para o dia
                   if (horarios.isEmpty) {
-                    return const SizedBox.shrink(); // Não exibe nada se não houver horários
+                    return const SizedBox
+                        .shrink(); // Não exibe nada se não houver horários
                   }
 
                   // Agrupar horários seguidos
@@ -395,9 +560,7 @@ class MonitorDetailView extends StatelessWidget {
     for (String horario in horarios) {
       final parts = horario.split(' ');
       String time = parts[0];
-      String location = parts.length > 1
-          ? parts.sublist(1).join(' ')
-          : '';
+      String location = parts.length > 1 ? parts.sublist(1).join(' ') : '';
 
       // Se não estamos agrupando, inicie um novo grupo
       if (currentStart == null) {
@@ -435,7 +598,7 @@ class MonitorDetailView extends StatelessWidget {
     // Adiciona o último grupo se existir
     if (currentStart != null && currentEnd != null) {
       grouped.add(
-          '${currentStart}-${DateFormat.Hm('pt_BR').format(DateFormat.Hm('pt_BR').parse(currentEnd!).add(Duration(minutes: 45)))}${currentLocation!.isNotEmpty ? ' $currentLocation' : ''}');
+          '$currentStart-${DateFormat.Hm('pt_BR').format(DateFormat.Hm('pt_BR').parse(currentEnd).add(const Duration(minutes: 45)))}${currentLocation!.isNotEmpty ? ' $currentLocation' : ''}');
     }
 
     return grouped;

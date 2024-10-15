@@ -6,7 +6,9 @@ class MonitorService {
   final String apiUrl = 'https://carrossel-flutter-api.vercel.app/monitores'; // 'http://localhost:9090/monitores';
 
   Map<String, List<Monitor>> monitoresPorMateria = {};
-  Map<String, int> calendarioTipoPorMateria = {}; // Adicionado para armazenar calendarioTipo
+  Map<String, List<String>> horariosPorMateria = {}; // Para armazenar os horários de cada matéria
+  Map<String, String> observacaoPorMateria = {}; // Para armazenar as observações de cada matéria
+  Map<String, int> calendarioTipoPorMateria = {};
 
   Future<void> fetchMonitores() async {
     final response = await http.get(Uri.parse(apiUrl));
@@ -17,6 +19,8 @@ class MonitorService {
       body.forEach((materia, dadosDaMateria) {
         if (dadosDaMateria is Map<String, dynamic>) {
           calendarioTipoPorMateria[materia] = dadosDaMateria['calendarioTipo'];
+          horariosPorMateria[materia] = List<String>.from(dadosDaMateria['horarios']);
+          observacaoPorMateria[materia] = dadosDaMateria['observacao'] ?? "";
 
           List<Monitor> monitoresList = [];
           for (var monitorJson in dadosDaMateria['monitores']) {
@@ -35,7 +39,15 @@ class MonitorService {
     return monitoresPorMateria[materia] ?? [];
   }
 
-int getCalendarioTipoPorMateria(String materia) {
+  List<String> getHorariosPorMateria(String materia) {
+    return horariosPorMateria[materia] ?? [];
+  }
+
+  String getObservacaoPorMateria(String materia) {
+    return observacaoPorMateria[materia] ?? "";
+  }
+
+  int getCalendarioTipoPorMateria(String materia) {
   if (calendarioTipoPorMateria.containsKey(materia)) {
     return calendarioTipoPorMateria[materia] ?? 30; 
   }

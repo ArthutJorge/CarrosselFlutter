@@ -16,23 +16,7 @@ class _MonitoriaPageState extends State<MonitoriaPage> {
   bool _isLoading = true;
   final PageController _pageController = PageController(viewportFraction: 0.75);
 
-  final List<String> materias = [
-    'matematica',
-    'ingles',
-    'fisica',
-    'educacaoFisica',
-    'artes',
-    'historia',
-    'portugues',
-    'biologia',
-    'quimica',
-    'segurancaTrabalho',
-    'meioAmbiente',
-    'mecatronica',
-    'informatica',
-    'enfermagem',
-    'eletronica',
-    'alimentos'
+  final List<String> materias = ['matematica','ingles','fisica','educacaoFisica','artes','humanas','portugues','biologia','quimica','segurancaTrabalho','meioAmbiente','mecatronica','informatica','enfermagem','eletronica','alimentos'
   ];
 
   @override
@@ -105,16 +89,14 @@ class _MonitoriaPageState extends State<MonitoriaPage> {
           : SingleChildScrollView(
               child: Column(
                 children: [
-                  // Carrossel para monitores disponíveis agora
-                  _buildCarousel(_disponiveisAgora, "Disponíveis Agora", Colors.green[100]!),
-                  // Carrossel para monitores disponíveis mais tarde
-                  _buildCarousel(_disponiveisMaisTarde, "Disponíveis Mais Tarde", Colors.yellow[100]!),
+                  _buildCarousel(_disponiveisAgora, "Disponíveis Agora", Colors.green[100]!, false),
+                  _buildCarousel(_disponiveisMaisTarde, "Disponíveis Mais Tarde", Colors.yellow[100]!, true),
                   const SizedBox(height: 16), // Espaço antes do botão
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => MonitoriaMateriaPage(materia: 'informatica')),
+                        MaterialPageRoute(builder: (context) => MonitoriaMateriaPage(materia: 'alimentos')),
                       );
                     },
                     child: Text('Ver Monitoria por matéria'),
@@ -125,21 +107,35 @@ class _MonitoriaPageState extends State<MonitoriaPage> {
     );
   }
 
-  Widget _buildCarousel(Map<String, List<Monitor>> monitoresMap, String title, Color cardColor) {
-    if (monitoresMap.isEmpty) {
-      return Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
+Widget _buildCarousel(Map<String, List<Monitor>> monitoresMap, String title, Color cardColor, bool isAvailableLater) {
+  if (monitoresMap.isEmpty) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Center( // Centraliza todo o conteúdo na página
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.info_outline, color: Colors.grey),
-            SizedBox(width: 8),
-            Text("Não há monitores disponíveis.", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            const Icon(
+              Icons.info_outline,
+              color: Colors.grey,
+              size: 60, // Tamanho do ícone
+            ),
+            const SizedBox(height: 8), // Espaço entre o ícone e o texto
+            Text(
+              isAvailableLater ? "Não há monitores disponíveis hoje." : "Não há monitores disponíveis agora.",
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black, // Cor do texto
+              ),
+              textAlign: TextAlign.center, // Centraliza o texto
+            ),
           ],
         ),
-      );
-    }
-
+      ),
+    );
+  }
+  
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
