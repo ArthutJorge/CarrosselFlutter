@@ -68,7 +68,7 @@ class _MonitoriaMateriaPageState extends State<MonitoriaMateriaPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            'Monitoria - ${StringCasingExtension(widget.materia).capitalize()}'), // Usa capitalize aqui
+            'Monitoria - ${materias[_selectedMateria!]}'), // Usa capitalize aqui
         centerTitle: true,
         backgroundColor: Colors.redAccent,
       ),

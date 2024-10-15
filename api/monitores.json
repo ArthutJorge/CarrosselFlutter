@@ -7,7 +7,7 @@
       "monitores": [
           {
               "nome": "João Vítor",
-              "avatar": "",
+              "avatar": "https://i.imgur.com/yi4YP4l.png",
               "horarios": {
                   "segunda": ["18:30 - Lina","19:00 - Lina","19:30 - Lina","20:00 - Lina","20:30 - Lina","21:00 - Lina"],
                   "terça": ["13:30 - Lina","14:00 - Lina","14:30 - Lina","15:00 - Lina","15:30 - Lina","16:00 - Lina","16:30 - Lina","17:00 - Lina","17:30 - Lina","18:00 - Lina","19:00 - Sala 14","19:30 - Sala 14","20:00 - Sala 14","20:30 - Sala 14","21:00 - Sala 14"],
@@ -19,7 +19,7 @@
           },
           {
               "nome": "Fábio Elizeu",
-              "avatar": "",
+              "avatar": "https://i.imgur.com/yi4YP4l.png",
               "horarios": {
                   "segunda": ["13:30 - Lina","14:00 - Lina"],
                   "terça": ["13:00 - Lina","13:30 - Lina","14:00 - Lina","14:30 - Lina","15:00 - Lina","15:30","16:00 - Lina","16:30 - Lina"],
@@ -39,7 +39,7 @@
         "monitores": [
             {
                 "nome": "Luana",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["10:00","10:30","11:00","11:30"],
                     "terça": ["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","17:00","17:30","18:00","18:30","19:00","19:30"],
@@ -51,7 +51,7 @@
             },
             {
                 "nome": "Aline",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": [],
                     "terça": ["13:00","13:30","14:00","14:30"],
@@ -63,7 +63,7 @@
             },
             {
                 "nome": "LUCAS",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["18:30","19:00","19:30","20:00","20:30"],
                     "terça": [],
@@ -82,7 +82,7 @@
         "monitores": [
             {
                 "nome": "Lucas",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["17:30 - Sala 5","18:00 - Sala 5","18:30 - Sala 5","19:00 - Sala 5","19:30 - Sala 5","20:00 - Sala 5"],
                     "terça": ["17:30 - Sala 5","18:00 - Sala 5","18:30 - Sala 5","19:00 - Sala 5","19:30 - Sala 5","20:00 - Sala 5"],
@@ -102,7 +102,7 @@
         "monitores": [
             {
                 "nome": "João Victor",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["17:00","17:30","18:00","18:30","19:00"],
                     "terça": ["17:00","17:30","18:00","18:30","19:00"],
@@ -122,7 +122,7 @@
       "monitores": [
           {
               "nome": "Isabella",
-              "avatar": "",
+              "avatar": "https://i.imgur.com/yi4YP4l.png",
               "horarios": {
                   "segunda": ["11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00"],
                   "terça": ["15:10","16:00","16:30","17:00","17:30","18:00","18:30", "19:00"],
@@ -142,7 +142,7 @@
         "monitores": [
             {
                 "nome": "Núbia",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["15:00","15:30","16:00","16:30","17:00","17:30","18:00"],
                     "terça": [],
@@ -154,7 +154,7 @@
             },
             {
                 "nome": "Luan",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": [],
                     "terça": ["19:30","20:00","20:30","21:00","21:30","22:00","22:30"],
@@ -166,7 +166,7 @@
             },
             {
                 "nome": "Allyson",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["19:00","19:30","20:00","20:30","21:00","21:30"],
                     "terça": [],
@@ -178,7 +178,7 @@
             },
             {
                 "nome": "Terasawa",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": [ "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30"],
                     "terça": [ "14:00", "14:30"],
@@ -190,7 +190,7 @@
             },
             {
                 "nome": "Thayla",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": [],
                     "terça": ["16:00","16:30","17:00","17:30","18:00","18:30"],
@@ -210,7 +210,7 @@
         "monitores": [
             {
                 "nome": "Samara",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["7:30 - Sala 16","8:15 - Sala 16","8:30 - Sala 16","9:00 - Sala 16","9:30 - Sala 16","10:00 - Sala 16","10:30 - Sala 16","11:00 - Sala 16","11:30 - Sala 16","12:00 - Sala 16"],
                     "terça": ["12:20 - Sala 8","13:00 - Sala 8"],
@@ -230,7 +230,7 @@
       "monitores": [
           {
               "nome": "Kauã",
-              "avatar": "",
+              "avatar": "https://i.imgur.com/yi4YP4l.png",
               "horarios": {
                   "segunda": ["10:45 - Sala 19","11:30 - Sala 19"],
                   "terça": ["13:30 - Sala 7","14:15 - Sala 7","15:00 - Sala 7","15:45 - Sala 7","16:00 - Sala 7","16:45 - Sala 7","17:30 - Sala 7"],
@@ -273,7 +273,7 @@
             },
             {
                 "nome": "Pedro",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["9:00 - Sala 16","9:30 - Sala 16","10:00 - Sala 16","10:30 - Sala 16", "18:00 - Sala 8","18:30 - Sala 8","19:00 - Sala 8"],
                     "terça": ["13:00 - Sala 8","13:30 - Sala 8","14:00 - Sala 8"],
@@ -292,7 +292,7 @@
         "monitores": [
             {
                 "nome": "Anna",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["10:00 - Humanidades", "10:45 - Humanidades","11:30 - Humanidades"],
                     "terça": ["12:15 - Humanidades", "18:15 - Humanidades"],
@@ -304,7 +304,7 @@
             },
             {
                 "nome": "Maria",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["9:00 - Humanidades","10:00 - Humanidades","12:15 - Humanidades","18:15 - Humanidades"],
                     "terça": ["12:15 - Humanidades", "17:30 - Humanidades", "18:15 - Humanidades"],
@@ -324,7 +324,7 @@
         "monitores": [
             {
                 "nome": "Paloma",
-                "avatar": "",
+                "avatar": "https://i.imgur.com/yi4YP4l.png",
                 "horarios": {
                     "segunda": ["16:30 - Humanidades","17:00 - Humanidades","17:30 - Humanidades","18:00 - Humanidades","18:30 - Humanidades","19:00 - Humanidades","19:30 - Humanidades","20:00 - Humanidades"],
                     "terça": ["14:00 - Humanidades","14:30 - Humanidades","15:00 - Humanidades","15:30 - Humanidades","16:00 - Humanidades","16:30 - Humanidades","17:00 - Humanidades","17:30 - Humanidades","18:00 - Humanidades","18:30 - Humanidades"],
@@ -374,7 +374,7 @@
     "monitores": [
       {
         "nome": "Ana Clarice",
-        "avatar": "",
+        "avatar": "https://i.imgur.com/yi4YP4l.png",
         "horarios": {
           "segunda": [],
           "terça": ["18:15 - Humanidades", "19:00 - Humanidades", "19:30 - Humanidades"],
@@ -394,7 +394,7 @@
     "monitores": [
       {
         "nome": "Aurora",
-        "avatar": "",
+        "avatar": "https://i.imgur.com/yi4YP4l.png",
         "horarios": {
           "segunda": ["7:30 - Sala 13", "8:15 - Sala 13", "11:30 - Sala 13"],
           "terça": [],
@@ -406,7 +406,7 @@
       },
       {
         "nome": "Antonio",
-        "avatar": "",
+        "avatar": "https://i.imgur.com/yi4YP4l.png",
         "horarios": {
           "segunda": [],
           "terça": ["18:15 - Sala 15", "19:00 - Sala 15"],
@@ -418,7 +418,7 @@
       },
       {
         "nome": "Enzo",
-        "avatar": "",
+        "avatar": "https://i.imgur.com/yi4YP4l.png",
         "horarios": {
           "segunda": [ "12:15", "13:30", "16:00", "16:45", "17:30"],
           "terça": ["12:15", "13:30"],
@@ -430,7 +430,7 @@
       },
       {
         "nome": "Luiz",
-        "avatar": "",
+        "avatar": "https://i.imgur.com/yi4YP4l.png",
         "horarios": {
           "segunda": ["15:45 - Sala 8","16:00 - Sala 8","16:45 - Sala 8","17:30 - Sala 8","18:15 - Sala 8"],
           "terça": ["15:45 - Sala 8","16:00 - Sala 8","16:45 - Sala 8","17:30 - Sala 8","18:15 - Sala 8"],
@@ -461,7 +461,7 @@
       },
       {
         "nome": "Binotto",
-        "avatar": "",
+        "avatar": "https://i.imgur.com/yi4YP4l.png",
         "horarios": {
           "segunda": ["7:30 - Sala 22","8:00 - Sala 22","8:30 - Sala 22","9:00 - Sala 22","9:30 - Sala 22","10:00 - Sala 22","10:30 - Sala 22","11:00 - Sala 22","11:30 - Sala 22","12:00 - Sala 22"],
           "terça": ["18:30 - Sala 22", "19:00 - Sala 22"],
@@ -485,7 +485,7 @@
       },
       {
         "nome": "Enzo",
-        "avatar": "",
+        "avatar": "https://i.imgur.com/yi4YP4l.png",
         "horarios": {
           "segunda": [],
           "terça": ["13:00 - Sala 22","13:30 - Sala 22","14:00 - Sala 22","14:30 - Sala 22"],
@@ -497,7 +497,7 @@
       },
       {
         "nome": "Gabriel V.",
-        "avatar": "",
+        "avatar": "https://i.imgur.com/yi4YP4l.png",
         "horarios": {
           "segunda": ["17:00 - **"],
           "terça": [ "16:30 - Sala 22", "17:00 - Sala 22", "17:30 - Sala 22", "18:00 - Sala 22", "18:30 - Sala 22"],
@@ -516,7 +516,7 @@
     "monitores": [
       {
         "nome": "Marina",
-        "avatar": "",
+        "avatar": "https://i.imgur.com/yi4YP4l.png",
         "horarios": {
           "segunda": [],
           "terça": [],
