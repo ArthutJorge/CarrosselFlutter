@@ -1,4 +1,3 @@
-import 'package:carrosselflutter/monitoria_materia.dart';
 import 'package:flutter/material.dart';
 import 'models/monitor.dart';
 import 'package:intl/intl.dart';
@@ -9,15 +8,15 @@ class MonitorCarousel extends StatelessWidget {
   final int calendarioTipo; // Novo parâmetro
 
   const MonitorCarousel({
-    Key? key,
+    super.key,
     required this.monitores,
     required this.onMonitorTap,
     required this.calendarioTipo, // Adicionado aqui
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    final PageController _pageController = PageController(viewportFraction: 0.75);
+    final PageController pageController = PageController(viewportFraction: 0.75);
 
     return SizedBox(
       height: 200,
@@ -25,7 +24,7 @@ class MonitorCarousel extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           PageView.builder(
-            controller: _pageController,
+            controller: pageController,
             itemCount: monitores.length,
             itemBuilder: (context, index) {
               final monitor = monitores[index];
@@ -70,7 +69,7 @@ class MonitorCarousel extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.arrow_left),
               onPressed: () {
-                _pageController.previousPage(
+                pageController.previousPage(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
@@ -82,7 +81,7 @@ class MonitorCarousel extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.arrow_right),
               onPressed: () {
-                _pageController.nextPage(
+                pageController.nextPage(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
@@ -162,8 +161,8 @@ String _getCardAvailabilityText(Monitor monitor) {
           DateTime proximoInicioHorario = DateFormat.Hm('pt_BR').parse(proximoHorarioSemLocal);
           DateTime proximoInicioCompleto = DateTime(now.year, now.month, now.day, proximoInicioHorario.hour, proximoInicioHorario.minute);
 
-          if (calendarioTipo == 45 && fimHorario.isAfter(proximoInicioCompleto.subtract(Duration(minutes: 15)))) {
-            fimDisponibilidade = proximoInicioCompleto.add(Duration(minutes: 45));
+          if (calendarioTipo == 45 && fimHorario.isAfter(proximoInicioCompleto.subtract(const Duration(minutes: 15)))) {
+            fimDisponibilidade = proximoInicioCompleto.add(const Duration(minutes: 45));
           } else if (calendarioTipo == 30) {
             break;
           } else {
@@ -201,15 +200,15 @@ class MateriaCarousel extends StatelessWidget {
   final int calendarioTipo; // Novo parâmetro
 
   const MateriaCarousel({
-    Key? key,
+    super.key,
     required this.monitores,
     required this.onMonitorTap,
     required this.calendarioTipo, // Adicionado aqui
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    final PageController _pageController = PageController(viewportFraction: 0.75);
+    final PageController pageController = PageController(viewportFraction: 0.75);
 
     return SizedBox(
       height: 200,
@@ -217,7 +216,7 @@ class MateriaCarousel extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           PageView.builder(
-            controller: _pageController,
+            controller: pageController,
             itemCount: _groupMonitorsBySubject().length,
             itemBuilder: (context, index) {
               final subject = _groupMonitorsBySubject().keys.elementAt(index);
@@ -242,7 +241,7 @@ class MateriaCarousel extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Wrap(
                         spacing: 10,
                         children: subjectMonitors.map((monitor) {
@@ -282,7 +281,7 @@ class MateriaCarousel extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.arrow_left),
               onPressed: () {
-                _pageController.previousPage(
+                pageController.previousPage(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
@@ -294,7 +293,7 @@ class MateriaCarousel extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.arrow_right),
               onPressed: () {
-                _pageController.nextPage(
+                pageController.nextPage(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
@@ -349,7 +348,7 @@ class MateriaCarousel extends StatelessWidget {
         DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horario.split(' - ')[0]);
         DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
         if (inicioHorarioCompleto.isAfter(now)) {
-          return 'Disponível às ${horario}';
+          return 'Disponível às $horario';
         }
       }
     }

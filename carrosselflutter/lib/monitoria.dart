@@ -5,6 +5,8 @@ import 'monitoria_materia.dart';
 import 'package:intl/intl.dart';
 
 class MonitoriaPage extends StatefulWidget {
+  const MonitoriaPage({super.key});
+
   @override
   _MonitoriaPageState createState() => _MonitoriaPageState();
 }
@@ -30,7 +32,6 @@ class _MonitoriaPageState extends State<MonitoriaPage> {
     _disponiveisAgora = {};
     _disponiveisMaisTarde = {};
 
-    List<Monitor> todosMonitores = _monitorService.getTodosMonitores();
     DateTime now = DateTime.now();
     String diaDaSemana = _getDiaDaSemana(now);
 
@@ -44,7 +45,7 @@ class _MonitoriaPageState extends State<MonitoriaPage> {
           for (String horario in horariosDoDia) {
             DateTime inicioHorario = DateFormat.Hm().parse(horario.split(' - ')[0]);
             DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
-            DateTime fimHorario = inicioHorarioCompleto.add(Duration(minutes: 45));
+            DateTime fimHorario = inicioHorarioCompleto.add(const Duration(minutes: 45));
 
             // Agrupando por disponibilidade agora
             if (now.isAfter(inicioHorarioCompleto) && now.isBefore(fimHorario)) {
@@ -85,7 +86,7 @@ class _MonitoriaPageState extends State<MonitoriaPage> {
         backgroundColor: Colors.redAccent,
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
               child: Column(
                 children: [
@@ -96,10 +97,10 @@ class _MonitoriaPageState extends State<MonitoriaPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => MonitoriaMateriaPage(materia: 'alimentos')),
+                        MaterialPageRoute(builder: (context) => const MonitoriaMateriaPage(materia: 'alimentos')),
                       );
                     },
-                    child: Text('Ver Monitoria por matéria'),
+                    child: const Text('Ver Monitoria por matéria'),
                   ),
                 ],
               ),
@@ -141,7 +142,7 @@ Widget _buildCarousel(Map<String, List<Monitor>> monitoresMap, String title, Col
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          child: Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         ),
         SizedBox(
           height: 200,
@@ -208,7 +209,7 @@ Widget _buildCarousel(Map<String, List<Monitor>> monitoresMap, String title, Col
                             ),
                             const SizedBox(height: 6), // Espaçamento entre o nome e a disponibilidade
                             // Exibir a mensagem de disponibilidade no fundo do card
-                            Spacer(), // Para empurrar o texto para o fundo
+                            const Spacer(), // Para empurrar o texto para o fundo
                             Text(
                               disponibilidadeComum,
                               style: const TextStyle(
@@ -272,7 +273,7 @@ Widget _buildCarousel(Map<String, List<Monitor>> monitoresMap, String title, Col
         String horarioSemLocal = horarioLocal[0];
         DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horarioSemLocal);
         DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
-        DateTime fimHorario = inicioHorarioCompleto.add(Duration(minutes: 45));
+        DateTime fimHorario = inicioHorarioCompleto.add(const Duration(minutes: 45));
 
         if (now.isAfter(inicioHorarioCompleto) && now.isBefore(fimHorario)) {
           // Monitor disponível agora

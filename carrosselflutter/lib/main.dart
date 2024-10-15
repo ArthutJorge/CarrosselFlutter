@@ -1,16 +1,17 @@
 import 'package:carrosselflutter/monitoria.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // Importar o pacote intl corretamente
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
   initializeDateFormatting('pt_BR', null).then((_) {
-    runApp(MyApp());
+    runApp(const MyApp());
   });
 }
 
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,12 +20,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainPage(),
+      home: const MainPage(),
     );
   }
 }
 
 class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

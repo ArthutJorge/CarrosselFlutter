@@ -8,7 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MonitoriaMateriaPage extends StatefulWidget {
   final String materia;
-  MonitoriaMateriaPage({required this.materia});
+  const MonitoriaMateriaPage({super.key, required this.materia});
 
   @override
   _MonitoriaMateriaPageState createState() => _MonitoriaMateriaPageState();
@@ -145,7 +145,7 @@ class _MonitoriaMateriaPageState extends State<MonitoriaMateriaPage> {
 // Extensão para capitalizar a primeira letra de uma string
 extension StringCasingExtension on String {
   String capitalize() {
-    return this.isEmpty ? this : '${this[0].toUpperCase()}${this.substring(1)}';
+    return isEmpty ? this : '${this[0].toUpperCase()}${this.substring(1)}';
   }
 }
 
@@ -283,7 +283,7 @@ Color _gerarCor(int index) {
   String _obterHorarioMaisProximo(List<String> horariosList) {
     DateTime now = DateTime.now();
     String horarioMaisProximo = horariosList.first;
-    Duration menorDiferenca = Duration(hours: 23, minutes: 59);
+    Duration menorDiferenca = const Duration(hours: 23, minutes: 59);
 
     for (String horario in horariosList) {
       DateTime horarioAtual = _parseHorario(horario);
@@ -579,7 +579,7 @@ class MonitorDetailView extends StatelessWidget {
         if ((currentTimeParsed.isAtSameMomentAs(lastEndTime) ||
             (currentTimeParsed.isAfter(lastEndTime) &&
                 currentTimeParsed
-                    .isBefore(lastEndTime.add(Duration(minutes: 30))) &&
+                    .isBefore(lastEndTime.add(const Duration(minutes: 30))) &&
                 (currentLocation == location ||
                     currentLocation!.isEmpty ||
                     location.isEmpty)))) {
@@ -587,7 +587,7 @@ class MonitorDetailView extends StatelessWidget {
         } else {
           // Adiciona o grupo atual e inicia um novo
           grouped.add(
-              '${currentStart}-${DateFormat.Hm('pt_BR').format(DateFormat.Hm('pt_BR').parse(currentEnd!).add(Duration(minutes: 45)))}${currentLocation!.isNotEmpty ? ' $currentLocation' : ''}');
+              '$currentStart-${DateFormat.Hm('pt_BR').format(DateFormat.Hm('pt_BR').parse(currentEnd).add(const Duration(minutes: 45)))}${currentLocation!.isNotEmpty ? ' $currentLocation' : ''}');
           currentStart = time;
           currentEnd = time;
           currentLocation = location;
