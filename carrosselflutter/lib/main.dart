@@ -1,3 +1,4 @@
+import 'package:carrosselflutter/bandeco.dart';
 import 'package:carrosselflutter/monitoria.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -60,7 +61,10 @@ class MainPage extends StatelessWidget {
                 icon: Icons.restaurant,
                 label: 'Bandeco',
                 onTap: () {
-                  // Ação do botão Bandeco
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BandecoPage()),
+                  );
                 },
               ),
               _buildGridButton(

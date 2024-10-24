@@ -546,61 +546,63 @@ class MonitorDetailView extends StatelessWidget {
     );
   }
 
-  List<String> _groupHorarios(List<String> horarios) {
-    // Ordena os horários
-    horarios.sort((a, b) => DateFormat.Hm('pt_BR')
-        .parse(a)
-        .compareTo(DateFormat.Hm('pt_BR').parse(b)));
+List<String> _groupHorarios(List<String> horarios) {
+  // Ordena os horários
+  horarios.sort((a, b) => DateFormat.Hm('pt_BR')
+      .parse(a.split(' ')[0])
+      .compareTo(DateFormat.Hm('pt_BR').parse(b.split(' ')[0])));
 
-    List<String> grouped = [];
-    String? currentStart;
-    String? currentEnd;
-    String? currentLocation;
+  List<String> grouped = [];
+  String? currentStart;
+  String? currentEnd;
+  String? currentLocation;
 
-    for (String horario in horarios) {
-      final parts = horario.split(' ');
-      String time = parts[0];
-      String location = parts.length > 1 ? parts.sublist(1).join(' ') : '';
+  // Define a tolerância com base no calendário tipo
+  int tolerance = (calendarioTipo == 45) ? 61 : 61; // 61 minutos para tipo 45 e 31 para tipo 30
 
-      // Se não estamos agrupando, inicie um novo grupo
-      if (currentStart == null) {
+  for (String horario in horarios) {
+    final parts = horario.split(' ');
+    String time = parts[0];
+    String location = parts.length > 1 ? parts.sublist(1).join(' ') : '';
+
+    // Se não estamos agrupando, inicie um novo grupo
+    if (currentStart == null) {
+      currentStart = time;
+      currentEnd = time;
+      currentLocation = location;
+    } else {
+      DateTime lastEndTime = DateFormat.Hm('pt_BR')
+          .parse(currentEnd!)
+          .add(Duration(minutes: 0)); // Atualiza o fim do horário
+      DateTime currentTimeParsed = DateFormat.Hm('pt_BR').parse(time);
+
+      // Agrupa se os horários estão no mesmo local e o intervalo é aceitável
+      if ((currentTimeParsed.isAtSameMomentAs(lastEndTime) ||
+          (currentTimeParsed.isAfter(lastEndTime) &&
+              currentTimeParsed.isBefore(lastEndTime.add(Duration(minutes: tolerance))) && // Usando 61 ou 31 minutos de intervalo
+              (currentLocation == location ||
+                  currentLocation!.isEmpty ||
+                  location.isEmpty)))) {
+        currentEnd = time; // Atualiza o fim do horário
+      } else {
+        // Adiciona o grupo atual e inicia um novo
+        grouped.add(
+            '$currentStart-${DateFormat.Hm('pt_BR').format(DateFormat.Hm('pt_BR').parse(currentEnd!).add(Duration(minutes: calendarioTipo)))}${currentLocation!.isNotEmpty ? ' $currentLocation' : ''}');
         currentStart = time;
         currentEnd = time;
         currentLocation = location;
-      } else {
-        // Verifica se o horário atual é consecutivo ao último
-        DateTime lastEndTime = DateFormat.Hm('pt_BR')
-            .parse(currentEnd!)
-            .add(Duration(minutes: calendarioTipo));
-
-        DateTime currentTimeParsed = DateFormat.Hm('pt_BR').parse(time);
-
-        // Agrupa se os horários são consecutivos ou estão no mesmo local
-        if ((currentTimeParsed.isAtSameMomentAs(lastEndTime) ||
-            (currentTimeParsed.isAfter(lastEndTime) &&
-                currentTimeParsed
-                    .isBefore(lastEndTime.add(const Duration(minutes: 30))) &&
-                (currentLocation == location ||
-                    currentLocation!.isEmpty ||
-                    location.isEmpty)))) {
-          currentEnd = time; // Atualiza o fim do horário
-        } else {
-          // Adiciona o grupo atual e inicia um novo
-          grouped.add(
-              '$currentStart-${DateFormat.Hm('pt_BR').format(DateFormat.Hm('pt_BR').parse(currentEnd).add(const Duration(minutes: 45)))}${currentLocation!.isNotEmpty ? ' $currentLocation' : ''}');
-          currentStart = time;
-          currentEnd = time;
-          currentLocation = location;
-        }
       }
     }
-
-    // Adiciona o último grupo se existir
-    if (currentStart != null && currentEnd != null) {
-      grouped.add(
-          '$currentStart-${DateFormat.Hm('pt_BR').format(DateFormat.Hm('pt_BR').parse(currentEnd).add(const Duration(minutes: 45)))}${currentLocation!.isNotEmpty ? ' $currentLocation' : ''}');
-    }
-
-    return grouped;
   }
+
+  // Adiciona o último grupo se existir
+  if (currentStart != null && currentEnd != null) {
+    grouped.add(
+        '$currentStart-${DateFormat.Hm('pt_BR').format(DateFormat.Hm('pt_BR').parse(currentEnd!).add(Duration(minutes: calendarioTipo)))}${currentLocation!.isNotEmpty ? ' $currentLocation' : ''}');
+  }
+
+  return grouped;
+}
+
+
 }

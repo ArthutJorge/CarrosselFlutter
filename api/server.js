@@ -27,7 +27,7 @@ app.get('/cardapio', async (req, res) => {
     let dataInicio = new Date(hoje);
 
     if (diaAtual !== 0) {
-      const diasParaDomingo = 7 - diaAtual;
+      const diasParaDomingo = 7 - (diaAtual + 1);
       dataInicio.setDate(hoje.getDate() + diasParaDomingo);
     }
 
@@ -58,9 +58,9 @@ app.get('/cardapio', async (req, res) => {
       };
 
       $('.menu-section').each((index, element) => {
-        const title = $(element).find('.menu-section-title').text().trim() || ''; // Adicionando || '' para evitar null
-        const dishName = $(element).find('.menu-item-name').text().trim() || ''; // Adicionando || '' para evitar null
-        const dishDescription = $(element).find('.menu-item-description').html(); // Usando .html() para pegar o conteúdo HTML
+        const title = $(element).find('.menu-section-title').text().trim() || '';
+        const dishName = $(element).find('.menu-item-name').text().trim() || '';
+        const dishDescription = $(element).find('.menu-item-description').html();
 
         if (title === "Almoço") {
           cardapios[dataFormatada].Almoço.principal = dishName;
@@ -70,9 +70,17 @@ app.get('/cardapio', async (req, res) => {
             const acompanhamentoParts = dishDescription.split('<br>').map(item => item.trim()).filter(item => item.length > 0);
             const observacaoIndex = acompanhamentoParts.indexOf('Observações:');
 
+            // Remove a linha que menciona "cardápio vegano"
+            acompanhamentoParts.forEach((part, index) => {
+              if (part.toLowerCase().includes('cardápio vegano')) {
+                acompanhamentoParts.splice(index, 1);
+              }
+            });
+
             if (observacaoIndex !== -1) {
               cardapios[dataFormatada].Almoço.acompanhamento = acompanhamentoParts.slice(0, observacaoIndex).filter(item => item.length > 0);
-              cardapios[dataFormatada].Almoço.observacao = acompanhamentoParts.slice(observacaoIndex + 1).join('<br>').trim(); // Pega tudo após "Observações:"
+              // Limpa tags HTML e substitui <br> por \n
+              cardapios[dataFormatada].Almoço.observacao = acompanhamentoParts.slice(observacaoIndex + 1).join('\n').replace(/<[^>]+>/g, '').trim();
             } else {
               cardapios[dataFormatada].Almoço.acompanhamento = acompanhamentoParts;
               cardapios[dataFormatada].Almoço.observacao = '';
@@ -86,9 +94,17 @@ app.get('/cardapio', async (req, res) => {
             const acompanhamentoParts = dishDescription.split('<br>').map(item => item.trim()).filter(item => item.length > 0);
             const observacaoIndex = acompanhamentoParts.indexOf('Observações:');
 
+            // Remove a linha que menciona "cardápio vegano"
+            acompanhamentoParts.forEach((part, index) => {
+              if (part.toLowerCase().includes('cardápio vegano')) {
+                acompanhamentoParts.splice(index, 1);
+              }
+            });
+
             if (observacaoIndex !== -1) {
               cardapios[dataFormatada].Jantar.acompanhamento = acompanhamentoParts.slice(0, observacaoIndex).filter(item => item.length > 0);
-              cardapios[dataFormatada].Jantar.observacao = acompanhamentoParts.slice(observacaoIndex + 1).join('<br>').trim(); // Pega tudo após "Observações:"
+              // Limpa tags HTML e substitui <br> por \n
+              cardapios[dataFormatada].Jantar.observacao = acompanhamentoParts.slice(observacaoIndex + 1).join('\n').replace(/<[^>]+>/g, '').trim();
             } else {
               cardapios[dataFormatada].Jantar.acompanhamento = acompanhamentoParts;
               cardapios[dataFormatada].Jantar.observacao = '';
@@ -104,6 +120,7 @@ app.get('/cardapio', async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar cardápios" });
   }
 });
+
 
 
 
