@@ -23,18 +23,23 @@ app.get('/cardapio', async (req, res) => {
   try {
     const cardapios = {};
     const hoje = new Date();
+    
     let diaAtual = hoje.getDay();
     let dataInicio = new Date(hoje);
+    let dataFinal = new Date(hoje);
 
-    if (diaAtual !== 0) {
-      const diasParaDomingo = 7 - (diaAtual + 1);
-      dataInicio.setDate(hoje.getDate() + diasParaDomingo);
+    // Se for sábado, vai até o próximo domingo (da próxima semana)
+    if (diaAtual === 6) {
+      dataFinal.setDate(hoje.getDate() + 8); // Próximo domingo (8 dias a partir de hoje)
+    } else {
+      // Se não for sábado, define apenas o próximo domingo
+      const diasParaDomingo = 8 - (diaAtual + 1);
+      dataFinal.setDate(hoje.getDate() + diasParaDomingo);
     }
 
-    for (let i = 0; i < 7; i++) {
-      const dia = new Date(dataInicio);
-      dia.setDate(dataInicio.getDate() - i);
-      const dataFormatada = dia.toISOString().split('T')[0];
+    // Loop para pegar os dias entre dataInicio e dataFinal
+    while (dataInicio <= dataFinal) {
+      const dataFormatada = dataInicio.toISOString().split('T')[0];
 
       const response = await axios.get(`https://sistemas.prefeitura.unicamp.br/apps/cardapio/index.php?d=${dataFormatada}`, {
         responseType: 'arraybuffer',
@@ -112,6 +117,9 @@ app.get('/cardapio', async (req, res) => {
           }
         }
       });
+
+      // Avança para o próximo dia
+      dataInicio.setDate(dataInicio.getDate() + 1);
     }
 
     res.json(cardapios);
@@ -120,6 +128,7 @@ app.get('/cardapio', async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar cardápios" });
   }
 });
+
 
 
 
