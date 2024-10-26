@@ -5,19 +5,19 @@ import 'package:intl/intl.dart';
 class MonitorCarousel extends StatelessWidget {
   final List<Monitor> monitores;
   final Function(Monitor) onMonitorTap;
-  final int calendarioTipo;
+  final int duracaoMonitoria;
 
   const MonitorCarousel({
     super.key,
     required this.monitores,
     required this.onMonitorTap,
-    required this.calendarioTipo,
+    required this.duracaoMonitoria,
   });
 
   @override
   Widget build(BuildContext context) {
     final PageController pageController =
-        PageController(viewportFraction: 0.75);
+        PageController(viewportFraction: 0.75); // cada card ocupa 0.75 da tela
 
     return SizedBox(
       height: 200,
@@ -26,16 +26,16 @@ class MonitorCarousel extends StatelessWidget {
         children: [
           PageView.builder( // cria um carroussel
             controller: pageController,
-            itemCount: monitores.length,
+            itemCount: monitores.length, 
             itemBuilder: (context, index) {
-              final monitor = monitores[index];
+              final monitor = monitores[index]; // monitor atual 
               return GestureDetector(
-                onTap: () => onMonitorTap(monitor),
+                onTap: () => onMonitorTap(monitor), // ao clicar aparece seus horários individuais
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  color: _getCardColor(monitor),
+                  color: _getCardColor(monitor), // cor do card
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -69,7 +69,7 @@ class MonitorCarousel extends StatelessWidget {
             left: 16,
             child: IconButton(
               icon: const Icon(Icons.arrow_left),
-              onPressed: () {
+              onPressed: () { // volta
                 pageController.previousPage(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
@@ -81,7 +81,7 @@ class MonitorCarousel extends StatelessWidget {
             right: 16,
             child: IconButton(
               icon: const Icon(Icons.arrow_right),
-              onPressed: () {
+              onPressed: () { // avança
                 pageController.nextPage(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
@@ -97,27 +97,25 @@ class MonitorCarousel extends StatelessWidget {
   Color _getCardColor(Monitor monitor) {
     DateTime now = DateTime.now();
     String diaDaSemana =
-        DateFormat('EEEE', 'pt_BR').format(now).replaceAll("-feira", "").trim();
+        DateFormat('EEEE', 'pt_BR').format(now).replaceAll("-feira", "").trim(); // pega os dias da semana sem o -feira
 
-    // Verificar se o monitor está disponível agora
+    // Verifica se o monitor está disponível agora
     if (monitor.horarios[diaDaSemana] != null) {
       for (String horario in monitor.horarios[diaDaSemana]!) {
         // Considera apenas o horário antes do traço
         String horarioSemLocal = horario.split(' - ')[0];
         DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horarioSemLocal);
-        DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day,
-            inicioHorario.hour, inicioHorario.minute);
+        DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
         DateTime fimHorario = inicioHorarioCompleto
-            .add(Duration(minutes: calendarioTipo)); // Usando calendarioTipo
+            .add(Duration(minutes: duracaoMonitoria)); // inicio horário + duração da monitoria
 
-        if (now.isAfter(inicioHorarioCompleto) && now.isBefore(fimHorario)) {
-          // Se está trabalhando agora, retorna verde
+        if (now.isAfter(inicioHorarioCompleto) && now.isBefore(fimHorario)) { // se está depois do horário de inicio e antes do de fim
           return Colors.green[100]!;
         }
       }
     }
 
-    // Verificar horários futuros
+    // Se não está disponível agora, verifica se vai estar disponível mais tarde de hoje
     List<String>? horariosFuturos = monitor.horarios[diaDaSemana];
     if (horariosFuturos != null) {
       for (String horario in horariosFuturos) {
@@ -126,23 +124,21 @@ class MonitorCarousel extends StatelessWidget {
         DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horarioSemLocal);
         DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day,
             inicioHorario.hour, inicioHorario.minute);
-        if (inicioHorarioCompleto.isAfter(now)) {
-          // Se há um horário futuro, retorna amarelo
+        if (inicioHorarioCompleto.isAfter(now)) { // se há uma monitoria depois de agora e hoje
           return Colors.yellow[100]!;
         }
       }
     }
-
-    // Se não há horários disponíveis hoje, retorna cinza
+    // se não há monitorias hoje
     return Colors.grey[300]!;
   }
 
   String _getCardAvailabilityText(Monitor monitor) {
     DateTime now = DateTime.now();
     String diaDaSemana =
-        DateFormat('EEEE', 'pt_BR').format(now).replaceAll("-feira", "").trim();
+        DateFormat('EEEE', 'pt_BR').format(now).replaceAll("-feira", "").trim(); // remove o feira
 
-    if (monitor.horarios[diaDaSemana] != null) {
+    if (monitor.horarios[diaDaSemana] != null) {  // se há horários nesse dia
       List<String> horarios = monitor.horarios[diaDaSemana]!;
       DateTime fimDisponibilidade;
 
@@ -150,40 +146,30 @@ class MonitorCarousel extends StatelessWidget {
         // Considera o horário e o local
         List<String> horarioLocal = horarios[i].split(' - ');
         String horarioSemLocal = horarioLocal[0];
-        String local = horarioLocal.length > 1 ? horarioLocal[1].trim() : '';
+        String local = horarioLocal.length > 1 ? horarioLocal[1].trim() : ''; // pega o local se ele existir 
 
+        // converte horário para DateTime
         DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horarioSemLocal);
-        DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day,
-            inicioHorario.hour, inicioHorario.minute);
-        DateTime fimHorario =
-            inicioHorarioCompleto.add(Duration(minutes: calendarioTipo));
+        DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day, inicioHorario.hour, inicioHorario.minute);
+        DateTime fimHorario = inicioHorarioCompleto.add(Duration(minutes: duracaoMonitoria));
 
-        // Verificar se agora está entre o horário de início e fim
+        // Verifica se agora está entre o horário de início e fim da monitoria
         if (now.isAfter(inicioHorarioCompleto) && now.isBefore(fimHorario)) {
           fimDisponibilidade = fimHorario;
 
-          // Verificar horários consecutivos
+          // Verifica se há monitorias seguidas para agrupar e calcular o horário de fim dessa sequencia
           for (int j = i + 1; j < horarios.length; j++) {
             List<String> proximoHorarioLocal = horarios[j].split(' - ');
             String proximoHorarioSemLocal = proximoHorarioLocal[0];
             DateTime proximoInicioHorario =
                 DateFormat.Hm('pt_BR').parse(proximoHorarioSemLocal);
-            DateTime proximoInicioCompleto = DateTime(
-                now.year,
-                now.month,
-                now.day,
-                proximoInicioHorario.hour,
-                proximoInicioHorario.minute);
-
-            if (calendarioTipo == 45 &&
-                fimHorario.isAfter(proximoInicioCompleto
-                    .subtract(const Duration(minutes: 15)))) {
-              fimDisponibilidade =
-                  proximoInicioCompleto.add(const Duration(minutes: 45));
-            } else if (calendarioTipo == 30) {
-              break;
+            DateTime proximoInicioCompleto = DateTime(now.year,now.month,now.day,proximoInicioHorario.hour,proximoInicioHorario.minute);
+            
+            // monitorias de 45 minutos tem intervalo de 15 minutos
+            if (duracaoMonitoria == 45 && fimHorario.isAfter(proximoInicioCompleto .subtract(const Duration(minutes: 15)))) {
+                fimDisponibilidade = proximoInicioCompleto.add(const Duration(minutes: 45));
             } else {
-              break;
+              break; // se não é de 45 minutos não tem intervalo
             }
           }
 
@@ -191,14 +177,13 @@ class MonitorCarousel extends StatelessWidget {
         }
       }
 
-      // Verificar horários futuros
+      // Se não está disponível agora
       for (String horario in horarios) {
         List<String> horarioLocal = horario.split(' - ');
         String horarioSemLocal = horarioLocal[0];
 
         DateTime inicioHorario = DateFormat.Hm('pt_BR').parse(horarioSemLocal);
-        DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day,
-            inicioHorario.hour, inicioHorario.minute);
+        DateTime inicioHorarioCompleto = DateTime(now.year, now.month, now.day,inicioHorario.hour, inicioHorario.minute);
 
         if (inicioHorarioCompleto.isAfter(now)) {
           return 'Disponível às $horario';
@@ -206,6 +191,7 @@ class MonitorCarousel extends StatelessWidget {
       }
     }
 
+    // se não está disponível hoje
     return 'Não disponível hoje';
   }
 }

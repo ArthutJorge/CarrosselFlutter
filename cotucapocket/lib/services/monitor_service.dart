@@ -3,12 +3,12 @@ import 'package:http/http.dart' as http;
 import '../models/monitor.dart';
 
 class MonitorService {
-  final String apiUrl = 'http://localhost:9090/monitores'; // https://cotuca-pocket-api.vercel.app/monitores
+  final String apiUrl = 'https://cotuca-pocket-api.vercel.app/monitores';
 
   Map<String, List<Monitor>> monitoresPorMateria = {};
   Map<String, List<String>> horariosPorMateria = {}; 
   Map<String, String> observacaoPorMateria = {}; 
-  Map<String, int> calendarioTipoPorMateria = {};
+  Map<String, int> duracaoMonitoriaPorMateria = {};
 
   Future<void> fetchMonitores() async {
     final response = await http.get(Uri.parse(apiUrl));
@@ -18,7 +18,7 @@ class MonitorService {
 
       body.forEach((materia, dadosDaMateria) {
         if (dadosDaMateria is Map<String, dynamic>) {
-          calendarioTipoPorMateria[materia] = dadosDaMateria['calendarioTipo'];
+          duracaoMonitoriaPorMateria[materia] = dadosDaMateria['duracaoMonitoria'];
           horariosPorMateria[materia] = List<String>.from(dadosDaMateria['horarios']);
           observacaoPorMateria[materia] = dadosDaMateria['observacao'];
 
@@ -47,9 +47,9 @@ class MonitorService {
     return observacaoPorMateria[materia] ?? "";
   }
 
-  int getCalendarioTipoPorMateria(String materia) {
-  if (calendarioTipoPorMateria.containsKey(materia)) {
-    return calendarioTipoPorMateria[materia] ?? 30; 
+  int getDuracaoMonitoriaPorMateria(String materia) {
+  if (duracaoMonitoriaPorMateria.containsKey(materia)) {
+    return duracaoMonitoriaPorMateria[materia] ?? 30; 
   }
   return 45; 
 }

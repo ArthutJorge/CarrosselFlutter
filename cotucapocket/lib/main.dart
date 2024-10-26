@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
-  initializeDateFormatting('pt_BR', null).then((_) {
+  initializeDateFormatting('pt_BR', null).then((_) { // inicia o app com datas formatadas em pt br
     runApp(const MyApp());
   });
 }
@@ -41,9 +41,9 @@ class MainPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: GridView.count(
-            crossAxisCount: 2, // Define o grid 2x2
-            crossAxisSpacing: 20, // Espaçamento horizontal
-            mainAxisSpacing: 20,  // Espaçamento vertical
+            crossAxisCount: 2, // grid 2x2
+            crossAxisSpacing: 20, 
+            mainAxisSpacing: 20, 
             children: [
               _buildGridButton(
                 context,
@@ -67,22 +67,6 @@ class MainPage extends StatelessWidget {
                   );
                 },
               ),
-              _buildGridButton(
-                context,
-                icon: Icons.meeting_room,
-                label: 'Salas',
-                onTap: () {
-                  // Ação do botão Salas
-                },
-              ),
-              _buildGridButton(
-                context,
-                icon: Icons.more_horiz,
-                label: 'Em Breve...',
-                onTap: () {
-                  // Ação futura
-                },
-              ),
             ],
           ),
         ),
@@ -95,11 +79,11 @@ class MainPage extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.redAccent, // Cor de fundo
+        backgroundColor: Colors.redAccent, 
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16), // Borda arredondada
+          borderRadius: BorderRadius.circular(16), 
         ),
-        padding: const EdgeInsets.all(16), // Espaçamento interno
+        padding: const EdgeInsets.all(16),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

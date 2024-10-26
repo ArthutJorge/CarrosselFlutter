@@ -99,7 +99,7 @@ def gerar_json_de_csv(caminho_csv):
 
     resultado = {
         "fisica": {
-            "calendarioTipo": 45,
+            "duracaoMonitoria": 45,
             "observacao": "",
             "horarios": horarios,  # Adiciona a lista de horários formatados
             "monitores": list(monitores.values())

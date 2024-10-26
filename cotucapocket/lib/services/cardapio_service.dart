@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/cardapio.dart';
 
 class CardapioService {
-  final String apiUrl = 'http://localhost:9090/cardapio';  // https://cotuca-pocket-api.vercel.app/cardapio
+  final String apiUrl = 'https://cotuca-pocket-api.vercel.app/cardapio';
   Map<String, Cardapio> cardapiosPorDia = {};
 
   Future<Map<String, Cardapio>> fetchCardapios() async {
